@@ -8,14 +8,9 @@ import ModalDetails from "./ModalDetails"
 
 import dataFilmes from "../../Data/filmes"
 
-export default function Catalogo(props){
-    
-    const {defCategory, searchMovie} = props
-
-
+export default function CatalogoLista(){
 
     const [dataMovies, setDataMovies] = useState(dataFilmes)
-
 
 
     const [showDelete, setShowDelete] = useState(false)
@@ -112,14 +107,7 @@ export default function Catalogo(props){
                 <tbody>
                     {
                         dataMovies
-                        .filter((a)=>(
-                            a.genero.indexOf(defCategory) !== -1
-                        ))
-                        .filter((b)=>(
-                            b.name.toUpperCase().indexOf(searchMovie.toUpperCase()) !== -1 ||
-                            b.categoria.toUpperCase().indexOf(searchMovie.toUpperCase()) !== -1 ||
-                            b.genero.toUpperCase().indexOf(searchMovie.toUpperCase()) !== -1
-                        )).sort((a,b)=>{
+                        .sort((a,b)=>{
                             if(maiorMenor == false){
                                 return b.notaImdb - a.notaImdb
                             }else{

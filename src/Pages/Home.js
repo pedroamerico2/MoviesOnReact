@@ -1,18 +1,14 @@
-import React, {useState} from "react"
-import Catalogo from "../Components/Catalogo/Catalogo"
-import Lista from "../Components/Lista/Lista"
+import React from "react"
 
-export default function Home(props){
-    const {defCategory, searchMovie, list} = props
-    
+import {Form, Button} from "react-bootstrap"
+
+export default function Home(){
     return(
         <div className="container-fluid">
-            {
-            !list?
-            <Catalogo searchMovie={searchMovie} defCategory={defCategory}/>
-            :
-            <Lista searchMovie={searchMovie} defCategory={defCategory}/>
-            }
+            <div className="w-100 d-inline-block" style={{}}>
+                <Form.Control className="mx-auto" style={{width:"400px"}} size="lg" type="text" placeholder="Large text" />
+                <Button variant="primary">Primary</Button>    
+            </div>
         </div>
     )
 }

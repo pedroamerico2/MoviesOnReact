@@ -1,5 +1,6 @@
-import React, {useState} from "react"
+import React from "react"
 import {Navbar, NavDropdown, Nav, Form, FormControl} from "react-bootstrap"
+import {Link} from "react-router-dom"
 
 
 export default function Header(props){
@@ -8,7 +9,7 @@ export default function Header(props){
     return(
         <>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-                <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+                <Navbar.Brand href=""><Link to="/home">Cansheteria</Link ></Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
