@@ -18,9 +18,9 @@
 .search{
     height: 50px;
     width: 800px;
-    border-radius: 0 5px 5px 0;
+    border-radius: 5px 0 0 5px;
     outline: none;
-    border-left: none;
+    border-right: none;
 
 
 }
@@ -29,9 +29,10 @@
     background-color: white;
     border: 1px solid #ced4da;
     outline: none;
-    border-radius: 5px 0 0 5px;
+    border-radius:  0 5px 5px 0 ;
 }
-.btn-search i{
+
+.btn-search i Link{
     color: black;
     outline: none;
 }

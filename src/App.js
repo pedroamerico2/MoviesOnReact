@@ -5,7 +5,7 @@ import Routes from "./Routes"
 
 export default function App(){
     return(
-        <BrowserRouter>      
+        <BrowserRouter>     
             <Routes />
         </BrowserRouter>
     )
