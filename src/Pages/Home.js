@@ -3,7 +3,7 @@ import "./Styles/Home.css"
 
 import Logo from "../Assets/g18-1.png"
 
-import {Form, Button} from "react-bootstrap"
+import {Form, Nav} from "react-bootstrap"
 
 export default function Home(){
     return(
@@ -15,16 +15,26 @@ export default function Home(){
                         <i className="material-icons">search</i>
                     </button>
                     <Form.Control className="search" type="text" placeholder="" />
-                </div>
-                <nav>
-                    <a href="">teste 01</a>
-                    <a href="">teste 01</a>
-                    <a href="">teste 01</a>
-                    <a href="">teste 01</a>
-                    <a href="">teste 01</a>
-                    <a href="">teste 01</a>
-                </nav>
+                </div>                
             </div>
+            <div className="subNav">
+                    <Nav className="justify-content-center" activeKey="/home">
+                        <Nav.Item>
+                            <Nav.Link href="/home">Active</Nav.Link>
+                        </Nav.Item>
+                        <Nav.Item>
+                            <Nav.Link eventKey="link-1">Link</Nav.Link>
+                        </Nav.Item>
+                        <Nav.Item>
+                            <Nav.Link eventKey="link-2">Link</Nav.Link>
+                        </Nav.Item>
+                        <Nav.Item>
+                            <Nav.Link eventKey="disabled" disabled>
+                                Disabled
+                            </Nav.Link>
+                        </Nav.Item>
+                    </Nav>
+                </div>
         </div>
     )
 }
