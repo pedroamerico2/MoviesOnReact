@@ -1,0 +1,13 @@
+.box{
+    display: flex ;
+    align-items: center ;
+    flex-direction: column;
+    justify-content: center;
+}
+.box img{
+    margin-bottom: 30px;
+}
+.box form{
+    height: 500;
+}
+

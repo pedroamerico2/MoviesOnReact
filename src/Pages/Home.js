@@ -9,10 +9,6 @@ import {Link} from "react-router-dom"
 
 export default function Home(){
     const[searchHome, setSearchHome] = useState("")
-    function mostraValor(valor){
-        const mostra = valor
-        alert (typeof(mostra));
-    }
     return(
         <div className="container-fluid home">            
             <div className="box">
@@ -30,17 +26,17 @@ export default function Home(){
                 </div>                
             </div>
             <div className="subNav">
-                    <Nav className="justify-content-center" activeKey="/home">
-                        <Nav.Item>
-                            <Nav.Link href="/catalogo">Catalogo</Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item>
-                            <Nav.Link eventKey="disabled" disabled>
-                                Disabled
-                            </Nav.Link>
-                        </Nav.Item>
-                    </Nav>
-                </div>
+                <Nav className="justify-content-center" activeKey="/home">
+                    <Nav.Item>
+                        <Nav.Link href="/catalogo">Catalogo</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Nav.Link eventKey="disabled" disabled>
+                            Disabled
+                        </Nav.Link>
+                    </Nav.Item>
+                </Nav>
+            </div>
         </div>
     )
 }

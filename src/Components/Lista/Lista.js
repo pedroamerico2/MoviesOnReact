@@ -8,7 +8,9 @@ import ModalDetails from "./ModalDetails"
 
 import dataFilmes from "../../Data/filmes"
 
-export default function CatalogoLista(){
+export default function CatalogoLista(props){
+
+    const{searchOnCatalog, categ, dateMax, dateMin, gen} = props;
 
     const [dataMovies, setDataMovies] = useState(dataFilmes)
 
@@ -20,8 +22,10 @@ export default function CatalogoLista(){
     const [showDetails, setShowDetails] = useState(false)
 
     
+    const [nota, setNota] = useState(true)
 
-    const [maiorMenor, setMaiorMenor] = useState(false)
+    const [maiorMenorNota, setMaiorMenorNota] = useState(false)
+    const [maiorMenorId, setMaiorMenorId] = useState(false)
 
 
     function searchMovieOnList(movieOnList) {
@@ -91,15 +95,15 @@ export default function CatalogoLista(){
                 dataMovies = {dataMovies}
                 setDataMovies = {setDataMovies}
             />
-            <Table striped bordered hover variant="dark">
+            <Table striped bordered hover variant="dark" style={{marginTop: "15px"}}>
                 <thead>
                     <tr>
-                        <th>#</th>
+                        <th><a style={{cursor: "pointer",userSelect: "none" }} onClick={()=>setMaiorMenorId(!maiorMenorId)}>#</a></th>
                         <th>Banner</th>
                         <th>Name</th>
                         <th>Genero</th>
                         <th>Categoria</th>
-                        <th><a style={{cursor: "pointer",userSelect: "none" }} onClick={()=>setMaiorMenor(!maiorMenor)}>Nota IMDB</a></th>
+                        <th><a style={{cursor: "pointer",userSelect: "none" }} onClick={()=>setMaiorMenorNota(!maiorMenorNota)}>Nota IMDB</a></th>
                         <th>Data de Lancamento</th>
                         <th className="text-center"> Acoes </th>
                     </tr>
@@ -107,32 +111,50 @@ export default function CatalogoLista(){
                 <tbody>
                     {
                         dataMovies
-                        .sort((a,b)=>{
-                            if(maiorMenor == false){
-                                return b.notaImdb - a.notaImdb
+                        .filter((a)=>(
+                            a.name.toUpperCase().indexOf(searchOnCatalog.toUpperCase()) !== -1 ||
+                            a.categoria.toUpperCase().indexOf(searchOnCatalog.toUpperCase()) !== -1 ||
+                            a.genero.toUpperCase().indexOf(searchOnCatalog.toUpperCase()) !== -1
+                        ))
+                        .filter((b)=>(
+                            b.genero.toUpperCase().indexOf(categ.toUpperCase()) !== -1
+                        ))
+                        .filter((g)=>(
+                            g.categoria.toUpperCase().indexOf(gen.toUpperCase()) !== -1
+                        ))
+                        .sort((c,d)=>{
+                            if(nota == true){
+                                if(maiorMenorNota == true){
+                                    return c.notaImdb - d.notaImdb
+                                }else{
+                                    return d.notaImdb - c.notaImdb
+                                }   
                             }else{
-                                return a.notaImdb - b.notaImdb
-                            }
-                            
+                                if(maiorMenorId == true){
+                                    return d.id - c.id
+                                }else{
+                                    return c.id - d.id
+                                }
+                            }  
                         })
-                        .map((c,index)=>(
+                        .map((e,index)=>(
                             <tr  >
                                 <td>{index+1}</td>
                                 <td>
                                     <img 
-                                        src={c.banner} 
+                                        src={e.banner} 
                                         style={{maxWidth: "30px", maxHeight:"50px"}}
                                     />
                                 </td>
-                                <td>{c.name}</td>
-                                <td>{c.genero}</td>
-                                <td>{c.categoria}</td>
-                                <td>{c.notaImdb}</td>
-                                <td>{c.dataLancamento}</td>
+                                <td>{e.name}</td>
+                                <td>{e.genero}</td>
+                                <td>{e.categoria}</td>
+                                <td>{e.notaImdb}</td>
+                                <td>{e.dataLancamento}</td>
                                 <td>
-                                    <Button  onClick={()=>setShowEdit(!showEdit), ()=>searchMovieOnListToEdit(c.id)}className="mx-1" variant="warning"><i className="material-icons">mode_edit</i></Button>
-                                    <Button onClick={()=>setShowDelete(!showDelete), ()=>searchMovieOnList(c.id)} className="mx-1" variant="danger"><i className="material-icons">delete</i></Button>
-                                    <Button onClick={()=>setShowDetails(!showDetails), ()=>searchMovieOnListToDetails(c.id)} className="mx-1" variant="info"><i className="material-icons">preview</i></Button>
+                                    <Button  onClick={()=>setShowEdit(!showEdit), ()=>searchMovieOnListToEdit(e.id)}className="mx-1" variant="warning"><i className="material-icons">mode_edit</i></Button>
+                                    <Button onClick={()=>setShowDelete(!showDelete), ()=>searchMovieOnList(e.id)} className="mx-1" variant="danger"><i className="material-icons">delete</i></Button>
+                                    <Button onClick={()=>setShowDetails(!showDetails), ()=>searchMovieOnListToDetails(e.id)} className="mx-1" variant="info"><i className="material-icons">preview</i></Button>
                                 </td>
                             </tr>
                         ))

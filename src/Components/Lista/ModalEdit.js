@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import {Modal, Button, Card, ListGroup, ListGroupItem} from "react-bootstrap"
 
 export default function ModalEdit(props){
@@ -11,6 +11,12 @@ export default function ModalEdit(props){
         setShowEdit({ show: false })
         
     }
+
+    const[] = useState()
+
+    useEffect(()=>{
+
+    },[])
     
 
 
@@ -22,7 +28,7 @@ export default function ModalEdit(props){
                 show={showEdit.show}
                 onHide={handleClose}
                 centered
-            ></Modal>
+            />
             <Modal show={showEdit.show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>{"ID: " + showEdit.id + " - " + showEdit.name}</Modal.Title>
