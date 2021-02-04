@@ -3,6 +3,8 @@ import {Container, Row, Button, Navbar, Nav, NavDropdown, FormControl, Form} fro
 
 import ModalAdd from "../Components/ModalAdd/ModalAdd"
 
+import Movies from "../Data/filmes.js"
+
 import Header from "../Components/DefaultComponents/Header"
 import Cards from "../Components/Cards/Cards"
 import List from "../Components/Lista/Lista"
@@ -18,7 +20,7 @@ export default function Catalog(){
 
     const [categ, setCateg] = useState("")
 
-    const [gen, setGen] = useState("")
+    const [genero, setGenero] = useState("")
 
     const [dateMin, setDateMin] = useState("")
 
@@ -32,6 +34,7 @@ export default function Catalog(){
         <>  <ModalAdd
                 show={showModalAdd}
                 onHide={() => setShowModalAdd(!showModalAdd)}
+                Movies={Movies}
             />
             <Header/>
             <Container className="w-80">
@@ -40,7 +43,7 @@ export default function Catalog(){
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="mr-auto">
                         <Button variant="succcess" onClick={()=>(setListOrCards(!listOrCards))}>
-                            <i className="material-icons">
+                            <i className="material-icons" style={{color: "white"}}>
                                 {
                                     listOrCards?
                                     "view_module"
@@ -50,24 +53,24 @@ export default function Catalog(){
                             </i>
                         </Button>
                         <Button variant="succcess" onClick={()=>(setShowModalAdd(!showModalAdd))}>
-                            <i className="material-icons">
+                            <i className="material-icons" style={{color: "white"}}>
                                 library_add
                             </i>
                         </Button>
                         <Button variant="succcess" onClick={()=>(teste(dateMin, dateMax))}>
-                            <i className="material-icons">
+                            <i className="material-icons" style={{color: "white"}}>
                                 spellcheck
                             </i>
                         </Button>
                         
                         <NavDropdown title="Genero" id="collasible-nav-dropdown">
-                        <NavDropdown.Item onClick={()=>{setGen("")}}>Todos</NavDropdown.Item>
-                            <NavDropdown.Item onClick={()=>{setGen("acao")}}>Acao</NavDropdown.Item>
-                            <NavDropdown.Item onClick={()=>{setGen("drama")}}>Drama</NavDropdown.Item>
-                            <NavDropdown.Item onClick={()=>{setGen("crime")}}>Crime</NavDropdown.Item>
-                            <NavDropdown.Item onClick={()=>{setGen("animacao")}}>Animacao</NavDropdown.Item>
-                            <NavDropdown.Item onClick={()=>{setGen("comedia")}}>Comedia</NavDropdown.Item>
-                            <NavDropdown.Item onClick={()=>{setGen("acao")}}>Aventura</NavDropdown.Item>
+                        <NavDropdown.Item onClick={()=>{setGenero("")}}>Todos</NavDropdown.Item>
+                            <NavDropdown.Item onClick={()=>{setGenero("acao")}}>Acao</NavDropdown.Item>
+                            <NavDropdown.Item onClick={()=>{setGenero("drama")}}>Drama</NavDropdown.Item>
+                            <NavDropdown.Item onClick={()=>{setGenero("crime")}}>Crime</NavDropdown.Item>
+                            <NavDropdown.Item onClick={()=>{setGenero("animacao")}}>Animacao</NavDropdown.Item>
+                            <NavDropdown.Item onClick={()=>{setGenero("comedia")}}>Comedia</NavDropdown.Item>
+                            <NavDropdown.Item onClick={()=>{setGenero("acao")}}>Aventura</NavDropdown.Item>
                         </NavDropdown>
                         <NavDropdown title="Categoria" id="collasible-nav-dropdown">
                         <NavDropdown.Item onClick={()=>{setCateg("")}}>Todos</NavDropdown.Item>
@@ -86,9 +89,9 @@ export default function Catalog(){
                 <Row>
                     {
                         !listOrCards?
-                        <Cards searchOnCatalog={searchOnCatalog} categ={categ} dateMin={dateMin} dateMax={dateMax} gen={gen}/>
+                        <Cards searchOnCatalog={searchOnCatalog} categ={categ} dateMin={dateMin} dateMax={dateMax} genero={genero}/>
                         :
-                        <List searchOnCatalog={searchOnCatalog} categ={categ} dateMin={dateMin} dateMax={dateMax} gen={gen}/>
+                        <List searchOnCatalog={searchOnCatalog} categ={categ} dateMin={dateMin} dateMax={dateMax} genero={genero}/>
                     }
                 </Row>
             </Container>

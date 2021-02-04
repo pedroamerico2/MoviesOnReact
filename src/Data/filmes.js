@@ -126,7 +126,7 @@ const Filmes = [
             bannerTop: "https://thumbs.dreamstime.com/b/eye-vision-test-banner-line-icons-set-infographics-vector-signs-eye-vision-test-banner-line-icons-set-infographics-vector-signs-106198263.jpg", 
             banner:"https://m.media-amazon.com/images/M/MV5BMTY5ODk1NzUyMl5BMl5BanBnXkFtZTgwMjUyNzEyMTE@._V1_UX182_CR0,0,182,268_AL_.jpg", 
             name: "Ataque dos Titãs", 
-            genero: "animation", 
+            genero: "animacao", 
             notaImdb:8.9, 
             sinopse:"After his hometown is destroyed and his mother is killed, young Eren Jaeger vows to cleanse the earth of the giant humanoid Titans that have brought humanity to the brink of extinction.", 
             dataLancamento:"2013-04-07", 

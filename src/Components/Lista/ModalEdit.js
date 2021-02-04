@@ -11,12 +11,6 @@ export default function ModalEdit(props){
         setShowEdit({ show: false })
         
     }
-
-    const[] = useState()
-
-    useEffect(()=>{
-
-    },[])
     
 
 

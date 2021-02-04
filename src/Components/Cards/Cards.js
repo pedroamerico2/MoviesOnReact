@@ -5,22 +5,20 @@ import dataFilmes from "../../Data/filmes"
 
 export default function ModelCards(props){
 
-    const {searchOnCatalog, categ, gen} = props;
+    const {searchOnCatalog, categ, genero} = props;
 
     return(
         <>
             {
             dataFilmes
             .filter((b)=>(
-                b.name.toUpperCase().indexOf(searchOnCatalog.toUpperCase()) !== -1 ||
-                b.categoria.toUpperCase().indexOf(searchOnCatalog.toUpperCase()) !== -1 ||
-                b.genero.toUpperCase().indexOf(searchOnCatalog.toUpperCase()) !== -1
+                b.name.toUpperCase().indexOf(searchOnCatalog.toUpperCase()) !== -1 
             ))
             .filter((b)=>(
-                b.genero.toUpperCase().indexOf(categ.toUpperCase()) !== -1
+                b.genero.toUpperCase().indexOf(genero.toUpperCase()) !== -1
             ))
             .filter((g)=>(
-                g.categoria.toUpperCase().indexOf(gen.toUpperCase()) !== -1
+                g.categoria.toUpperCase().indexOf(categ.toUpperCase()) !== -1
             ))
             .sort((c,d)=>{
                     return d.notaImdb - c.notaImdb
