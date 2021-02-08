@@ -1,18 +1,36 @@
 import React, { useEffect, useState } from "react"
-import {Modal, Button, Card, ListGroup, ListGroupItem} from "react-bootstrap"
+import {Modal, Button, Card, ListGroup, ListGroupItem, FormControl, Form} from "react-bootstrap"
 
 export default function ModalEdit(props){
-    const {showEdit, setShowEdit} = props
+    const {showEdit, setShowEdit, setBanner, setName, setSinopse, setGenero,dataMovies, setDataMovies, setCategoria, banner1, name1, sinopse1, genero1, categoria1, editData} = props
     function handleClose() {
         setShowEdit({ show: false });
     }
-    function handleCloseEdit(){
+    function handleCloseEdit(id, banner, name, sinopse, categoria
+        ,genero){
+        editData(id, banner, name, sinopse, categoria,genero);{
+                setDataMovies(dataMovies.map((movie)=>{
+                    if(movie.id === id){
+                        return{
+                            id: movie.id,
+                            bannerTop: movie.bannerTop,
+                            banner: banner,
+                            name: name,
+                            genero: genero,
+                            notaImdb: movie.notaImdb,
+                            sinopse: sinopse,
+                            dataLancamento: movie.dataLancamento,
+                            categoria: categoria
+                        }
 
-        setShowEdit({ show: false })
+                    }else{
+                        return {...movie}
+                    }
+                })) 
+            }
+        setShowEdit({ show: false });
         
     }
-    
-
 
     return(
         <>
@@ -30,15 +48,45 @@ export default function ModalEdit(props){
                     <Modal.Body className="mx-auto">
                         <Card style={{ width: '20rem' }}>
                             <Card.Img variant="top" src={showEdit.banner}/>
+                            <Form.Label className="text-center">URL Banner: </Form.Label>
+                            <FormControl 
+                                    type="text"
+                                    value={banner1}
+                                    onChange = {(e)=>{setBanner(e.target.value)}}
+                                    />
                             <Card.Body>
-                                <Card.Title><input type="text" placeholder={showEdit.name}/></Card.Title>
+                                <Card.Title>
+                                    <FormControl 
+                                    type="text"
+                                    value={name1}
+                                    onChange = {(e)=>{setName(e.target.value)}}
+                                    />
+                                </Card.Title>
                                 <Card.Text>
-                                    <input type="text" placeholder={showEdit.sinopse}/>
+                                    <FormControl
+                                    type="textarea"
+                                    as="textarea" 
+                                    rows={3}
+                                    value={sinopse1}
+                                    onChange = {(e)=>{setSinopse(e.target.value)}}
+                                    />
                                 </Card.Text>
                             </Card.Body>
                             <ListGroup className="list-group-flush">
-                                <ListGroupItem><input type="text" placeholder={showEdit.genero}/></ListGroupItem>
-                                <ListGroupItem><input type="text" placeholder={showEdit.categoria}/></ListGroupItem>
+                                <ListGroupItem>
+                                    <FormControl
+                                    type="text" 
+                                    value={genero1} 
+                                    onChange = {(e)=>{setGenero(e.target.value)}}
+                                    />
+                                </ListGroupItem>
+                                <ListGroupItem>
+                                    <FormControl
+                                    type="text" 
+                                    value={categoria1}
+                                    onChange = {(e)=>{setCategoria(e.target.value)}}
+                                    />                                
+                                </ListGroupItem>
                             </ListGroup>
                             <Card.Body>
                                 <Card.Link href="#">Card Link</Card.Link>
@@ -47,10 +95,11 @@ export default function ModalEdit(props){
                         </Card>
                     </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={()=>handleCloseEdit()}>
+                    <Button variant="secondary" onClick={()=>handleClose()}>
                         Cancelar
                     </Button>
-                    <Button variant="success" onClick={()=>handleCloseEdit()}>
+                    <Button variant="success" onClick={()=>handleCloseEdit(showEdit.id, banner1, name1, sinopse1, categoria1
+    ,genero1)}>
                         Salvar
                     </Button>
                 </Modal.Footer>

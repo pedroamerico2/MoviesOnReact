@@ -1,9 +1,10 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 import {Table, Container,Button} from "react-bootstrap"
 
 import ModalDelete from "./ModalDelete"
-import ModalEdit from "./ModalEdit"
 import ModalDetails from "./ModalDetails"
+
+import Linha from "./Linha"
 
 
 import dataFilmes from "../../Data/filmes"
@@ -16,14 +17,9 @@ export default function CatalogoLista(props){
 
 
     const [showDelete, setShowDelete] = useState(false)
-
-    const [showEdit, setShowEdit] = useState(false)
-
     const [showDetails, setShowDetails] = useState(false)
 
-
     const [maiorMenorNota, setMaiorMenorNota] = useState(false)
-
 
     function searchMovieOnList(movieOnList) {
         const [movieFilter] = dataMovies.filter((d) => (d.id === movieOnList))
@@ -37,22 +33,24 @@ export default function CatalogoLista(props){
             alert("nada aqui")
         }
     }
-    function searchMovieOnListToEdit(movieOnListEdit) {
-        const [movieFilterEdit] = dataMovies.filter((d) => (d.id === movieOnListEdit))
-        if (movieFilterEdit) {
-            setShowEdit({
-                id: movieFilterEdit.id,
-                banner: movieFilterEdit.banner,
-                name: movieFilterEdit.name,
-                sinopse: movieFilterEdit.sinopse,
-                categoria: movieFilterEdit.categoria,
-                genero: movieFilterEdit.genero,
-                show: true,
-            });
-        } else {
-            alert("nada aqui")
-        }
+    function editData(id, banner, name, sinopse, categoria
+    ,genero){
+        setDataMovies(dataMovies.map((movie)=>{
+            if(movie.id === id){
+                return{
+                    id: movie.id,
+                    banner: movie.banner,
+                    name: name,
+                    sinopse: sinopse,
+                    categoria: categoria,
+                    genero: genero,
+                }
+            }else{
+                return {...movie}
+            }
+        }))
     }
+
     function searchMovieOnListToDetails(movieOnListDetails) {
         const [movieFilterDetails] = dataMovies.filter((d) => (d.id === movieOnListDetails))
         if (movieFilterDetails) {
@@ -77,12 +75,6 @@ export default function CatalogoLista(props){
             <ModalDelete
                 showDelete={showDelete}
                 setShowDelete={setShowDelete}
-                dataMovies = {dataMovies}
-                setDataMovies = {setDataMovies}
-            />
-            <ModalEdit
-                showEdit={showEdit}
-                setShowEdit={setShowEdit}
                 dataMovies = {dataMovies}
                 setDataMovies = {setDataMovies}
             />
@@ -127,25 +119,26 @@ export default function CatalogoLista(props){
                             } 
                         })
                         .map((e,index)=>(
-                            <tr  >
-                                <td>{index+1}</td>
-                                <td>
-                                    <img 
-                                        src={e.banner} 
-                                        style={{maxWidth: "30px", maxHeight:"50px"}}
-                                    />
-                                </td>
-                                <td>{e.name}</td>
-                                <td>{e.genero}</td>
-                                <td>{e.categoria}</td>
-                                <td>{e.notaImdb}</td>
-                                <td>{e.dataLancamento}</td>
-                                <td>
-                                    <Button  onClick={()=>setShowEdit(!showEdit), ()=>searchMovieOnListToEdit(e.id)}className="mx-1" variant="warning"><i className="material-icons">mode_edit</i></Button>
-                                    <Button onClick={()=>setShowDelete(!showDelete), ()=>searchMovieOnList(e.id)} className="mx-1" variant="danger"><i className="material-icons">delete</i></Button>
-                                    <Button onClick={()=>setShowDetails(!showDetails), ()=>searchMovieOnListToDetails(e.id)} className="mx-1" variant="info"><i className="material-icons">preview</i></Button>
-                                </td>
-                            </tr>
+                            <Linha 
+                            setShowDelete = {setShowDelete}
+                            searchMovieOnList = {searchMovieOnList}
+                            setShowDetails = {setShowDetails}
+                            dataMovies = {dataMovies}
+                            setDataMovies = {setDataMovies}
+                            searchMovieOnListToDetails = {searchMovieOnListToDetails}
+                            editData={editData}
+                            dataMovies={dataMovies}
+                            showDelete={showDelete}
+                            showDetails={showDetails}
+                            index = {index}
+                            id = {e.id}
+                            banner = {e.banner}
+                            name = {e.name}
+                            genero = {e.genero}
+                            categoria = {e.categoria}
+                            notaImdb = {e.notaImdb}
+                            dataLancamento = {e.dataLancamento}
+                            />
                         ))
                     }
                 </tbody>
