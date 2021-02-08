@@ -2,15 +2,15 @@ import React, { useEffect, useState } from "react"
 import {Modal, Button, Card, ListGroup, ListGroupItem, FormControl, Form} from "react-bootstrap"
 
 export default function ModalEdit(props){
-    const {showEdit, setShowEdit, setBanner, setName, setSinopse, setGenero,dataMovies, setDataMovies, setCategoria, banner1, name1, sinopse1, genero1, categoria1, editData} = props
+    const {showEdit, setShowEdit, setBanner, setName, setSinopse, setGenero,dataMovies, setDataMovies, setCategoria, banner1, name1, sinopse1, genero1, categoria1, editData, id1} = props
     function handleClose() {
         setShowEdit({ show: false });
     }
-    function handleCloseEdit(id, banner, name, sinopse, categoria
+    function handleCloseEdit(banner, name, sinopse, categoria
         ,genero){
-        editData(id, banner, name, sinopse, categoria,genero);{
+        editData(id1, banner, name, sinopse, categoria,genero);{
                 setDataMovies(dataMovies.map((movie)=>{
-                    if(movie.id === id){
+                    if(movie.id === id1){
                         return{
                             id: movie.id,
                             bannerTop: movie.bannerTop,
@@ -29,8 +29,8 @@ export default function ModalEdit(props){
                 })) 
             }
         setShowEdit({ show: false });
-        
     }
+    
 
     return(
         <>
@@ -98,8 +98,7 @@ export default function ModalEdit(props){
                     <Button variant="secondary" onClick={()=>handleClose()}>
                         Cancelar
                     </Button>
-                    <Button variant="success" onClick={()=>handleCloseEdit(showEdit.id, banner1, name1, sinopse1, categoria1
-    ,genero1)}>
+                    <Button variant="success" onClick={()=>handleCloseEdit(banner1, name1, sinopse1, categoria1, genero1)}>
                         Salvar
                     </Button>
                 </Modal.Footer>

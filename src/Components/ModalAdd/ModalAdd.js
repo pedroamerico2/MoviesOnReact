@@ -19,7 +19,7 @@ export default function ModalAdd(props){
     function addMovie (){
         return(
             Movies.unshift({
-                id: id2 ,
+                id: id2+1 ,
                 bannerTop: "https://thumbs.dreamstime.com/b/eye-vision-test-banner-line-icons-set-infographics-vector-signs-eye-vision-test-banner-line-icons-set-infographics-vector-signs-106198263.jpg", 
                 banner: document.getElementById("banner").value, 
                 name: document.getElementById("name").value, 
@@ -63,7 +63,6 @@ export default function ModalAdd(props){
                             <option value="animacao" onClick={()=>setGenero("animacao")}>Animacao</option>
                         </Form.Control>
                     </Form.Group>
-                    
                     <Form.Group className="text-left" controlId="exampleForm.ControlSelect2">
                         <Form.Label>Nota: </Form.Label>
                         <Form.Control 

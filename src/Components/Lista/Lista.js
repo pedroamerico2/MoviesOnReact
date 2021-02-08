@@ -67,9 +67,6 @@ export default function CatalogoLista(props){
             alert("nada aqui")
         }
     }
-    
-    
-
     return(
         <Container className="w-80">
             <ModalDelete
@@ -135,6 +132,7 @@ export default function CatalogoLista(props){
                             banner = {e.banner}
                             name = {e.name}
                             genero = {e.genero}
+                            sinopse = {e.sinopse}
                             categoria = {e.categoria}
                             notaImdb = {e.notaImdb}
                             dataLancamento = {e.dataLancamento}

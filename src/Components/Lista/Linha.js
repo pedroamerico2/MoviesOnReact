@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react"
-import {Table, Container,Button} from "react-bootstrap"
+import {Button} from "react-bootstrap"
 
 import ModalEdit from "./ModalEdit"
 
@@ -8,6 +8,8 @@ export default function Linha(props){
 
     const [showEdit, setShowEdit] = useState(false)
 
+
+    const [id1, setId] = useState("")
     const [banner1, setBanner ] = useState("")
     const [name1, setName ] = useState("")
     const [sinopse1, setSinopse ] = useState("")
@@ -33,7 +35,8 @@ export default function Linha(props){
 
     }
 
-    useEffect(()=>{         
+    useEffect(()=>{ 
+        setId(id)
         setBanner(banner)
         setName(name)
         setSinopse(sinopse)
@@ -45,7 +48,6 @@ export default function Linha(props){
     return(
         <>
             <ModalEdit
-            
                 showEdit={showEdit}
                 setShowEdit={setShowEdit}
                 setBanner = {setBanner}
@@ -53,10 +55,11 @@ export default function Linha(props){
                 setSinopse = {setSinopse}
                 setGenero = {setGenero}
                 setCategoria = {setCategoria}
-                dataMovies = {dataMovies}
                 setDataMovies = {setDataMovies} 
+                dataMovies = {dataMovies}
                 editData={editData}
                 
+                id1={id1}
                 banner1={banner1}
                 name1={name1}
                 sinopse1={sinopse1}
