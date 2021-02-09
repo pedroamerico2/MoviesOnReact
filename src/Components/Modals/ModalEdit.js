@@ -2,15 +2,24 @@ import React, { useEffect, useState } from "react"
 import {Modal, Button, Card, ListGroup, ListGroupItem, FormControl, Form} from "react-bootstrap"
 
 export default function ModalEdit(props){
-    const {showEdit, setShowEdit, setBanner, setName, setSinopse, setGenero,dataMovies, setDataMovies, setCategoria, banner1, name1, sinopse1, genero1, categoria1, editData, id1} = props
-    function handleClose() {
-        setShowEdit({ show: false });
+    const {showEdit, setShowEdit, dataMovies, setDataMovies, editData} = props
+
+    const [id, setId] = useState("")
+    const [banner, setBanner] = useState("")
+    const [name, setName] = useState("")
+    const [sinopse, setSinopse] = useState("")
+    const [genero, setGenero] = useState("")
+    const [categoria, setCategoria] = useState("")
+
+    function handleClose(){
+        setShowEdit({ show: false })
     }
+
     function handleCloseEdit(banner, name, sinopse, categoria
         ,genero){
-        editData(id1, banner, name, sinopse, categoria,genero);{
+        editData(banner, name, sinopse, categoria,genero);{
                 setDataMovies(dataMovies.map((movie)=>{
-                    if(movie.id === id1){
+                    if(movie.id === id){
                         return{
                             id: movie.id,
                             bannerTop: movie.bannerTop,
@@ -22,26 +31,27 @@ export default function ModalEdit(props){
                             dataLancamento: movie.dataLancamento,
                             categoria: categoria
                         }
-
                     }else{
-                        return {...movie}
+                        return movie
                     }
                 })) 
             }
         setShowEdit({ show: false });
     }
     
+    useEffect(()=>{ 
+        setId(showEdit.id)
+        setBanner(showEdit.banner)
+        setName(name)
+        setSinopse(showEdit.sinopse)
+        setGenero(showEdit.genero)
+        setCategoria(showEdit.categoria)
+    },[])
+
 
     return(
         <>
-            <Modal
-                size="sm"
-                aria-labelledby="contained-modal-title-vcenter"
-                show={showEdit.show}
-                onHide={handleClose}
-                centered
-            />
-            <Modal show={showEdit.show} onHide={handleClose}>
+            <Modal show={showEdit.show} onHide={handleClose()}>
                 <Modal.Header closeButton>
                     <Modal.Title>{"ID: " + showEdit.id + " - " + showEdit.name}</Modal.Title>
                 </Modal.Header>
@@ -51,14 +61,14 @@ export default function ModalEdit(props){
                             <Form.Label className="text-center">URL Banner: </Form.Label>
                             <FormControl 
                                     type="text"
-                                    value={banner1}
+                                    value={banner}
                                     onChange = {(e)=>{setBanner(e.target.value)}}
                                     />
                             <Card.Body>
                                 <Card.Title>
                                     <FormControl 
                                     type="text"
-                                    value={name1}
+                                    value={name}
                                     onChange = {(e)=>{setName(e.target.value)}}
                                     />
                                 </Card.Title>
@@ -67,7 +77,7 @@ export default function ModalEdit(props){
                                     type="textarea"
                                     as="textarea" 
                                     rows={3}
-                                    value={sinopse1}
+                                    value={sinopse}
                                     onChange = {(e)=>{setSinopse(e.target.value)}}
                                     />
                                 </Card.Text>
@@ -76,14 +86,14 @@ export default function ModalEdit(props){
                                 <ListGroupItem>
                                     <FormControl
                                     type="text" 
-                                    value={genero1} 
+                                    value={genero} 
                                     onChange = {(e)=>{setGenero(e.target.value)}}
                                     />
                                 </ListGroupItem>
                                 <ListGroupItem>
                                     <FormControl
                                     type="text" 
-                                    value={categoria1}
+                                    value={categoria}
                                     onChange = {(e)=>{setCategoria(e.target.value)}}
                                     />                                
                                 </ListGroupItem>
@@ -98,7 +108,7 @@ export default function ModalEdit(props){
                     <Button variant="secondary" onClick={()=>handleClose()}>
                         Cancelar
                     </Button>
-                    <Button variant="success" onClick={()=>handleCloseEdit(banner1, name1, sinopse1, categoria1, genero1)}>
+                    <Button variant="success" onClick={()=>handleCloseEdit(banner, name, sinopse, categoria, genero)}>
                         Salvar
                     </Button>
                 </Modal.Footer>

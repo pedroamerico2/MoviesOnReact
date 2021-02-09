@@ -1,24 +1,19 @@
 import React, {useState, useEffect} from "react"
 import {Table, Container,Button} from "react-bootstrap"
 
-import ModalDelete from "./ModalDelete"
-import ModalDetails from "./ModalDetails"
+import ModalDelete from "../Modals/ModalDelete"
+import ModalDetails from "../Modals/ModalDetails"
+import ModalEdit from "../Modals/ModalEdit"
 
-import Linha from "./Linha"
-
-
-import dataFilmes from "../../Data/filmes"
 
 export default function CatalogoLista(props){
 
-    const{searchOnCatalog, categ, dateMax, dateMin, genero} = props;
-
-    const [dataMovies, setDataMovies] = useState(dataFilmes)
-
+    const{searchOnCatalog, filterCategory, dateMax, dateMin, filterGender, dataMovies, setDataMovies} = props;
 
     const [showDelete, setShowDelete] = useState(false)
     const [showDetails, setShowDetails] = useState(false)
-
+    const [showEdit, setShowEdit] = useState(false)
+    
     const [maiorMenorNota, setMaiorMenorNota] = useState(false)
 
     function searchMovieOnList(movieOnList) {
@@ -67,6 +62,24 @@ export default function CatalogoLista(props){
             alert("nada aqui")
         }
     }
+    function searchMovieOnListToEdit(movieOnListEditId) {
+        const [movieFilterEdit] = dataMovies.filter((d) => (d.id === movieOnListEditId))
+        if (movieFilterEdit) {
+            setShowEdit({
+                id: movieFilterEdit.id,
+                banner: movieFilterEdit.banner,
+                name: movieFilterEdit.name,
+                sinopse: movieFilterEdit.sinopse,
+                categoria: movieFilterEdit.categoria,
+                genero: movieFilterEdit.genero,
+                show: true,
+            });
+            
+        } else {
+            alert("nada aqui")
+        }
+
+    }
     return(
         <Container className="w-80">
             <ModalDelete
@@ -80,6 +93,11 @@ export default function CatalogoLista(props){
                 setShowDetails={setShowDetails}
                 dataMovies = {dataMovies}
                 setDataMovies = {setDataMovies}
+            />
+            <ModalEdit
+                showEdit={showEdit}
+                setShowEdit={setShowEdit}
+                editData={editData}
             />
             <Table striped bordered hover variant="dark" style={{marginTop: "15px"}}>
                 <thead>
@@ -103,10 +121,10 @@ export default function CatalogoLista(props){
                             a.genero.toUpperCase().indexOf(searchOnCatalog.toUpperCase()) !== -1
                         ))
                         .filter((b)=>(
-                            b.genero.toUpperCase().indexOf(genero.toUpperCase()) !== -1
+                            b.genero.toUpperCase().indexOf(filterGender.toUpperCase()) !== -1
                         ))
                         .filter((elementCateg)=>(
-                            elementCateg.categoria.toUpperCase().indexOf(categ.toUpperCase()) !== -1
+                            elementCateg.categoria.toUpperCase().indexOf(filterCategory.toUpperCase()) !== -1
                         ))
                         .sort((c,d)=>{
                             if(maiorMenorNota === true){
@@ -116,27 +134,25 @@ export default function CatalogoLista(props){
                             } 
                         })
                         .map((e,index)=>(
-                            <Linha 
-                            setShowDelete = {setShowDelete}
-                            searchMovieOnList = {searchMovieOnList}
-                            setShowDetails = {setShowDetails}
-                            dataMovies = {dataMovies}
-                            setDataMovies = {setDataMovies}
-                            searchMovieOnListToDetails = {searchMovieOnListToDetails}
-                            editData={editData}
-                            dataMovies={dataMovies}
-                            showDelete={showDelete}
-                            showDetails={showDetails}
-                            index = {index}
-                            id = {e.id}
-                            banner = {e.banner}
-                            name = {e.name}
-                            genero = {e.genero}
-                            sinopse = {e.sinopse}
-                            categoria = {e.categoria}
-                            notaImdb = {e.notaImdb}
-                            dataLancamento = {e.dataLancamento}
-                            />
+                            <tr>
+                                <td>{index+1}</td>
+                                <td>
+                                    <img 
+                                        src={e.banner} 
+                                        style={{maxWidth: "30px", maxHeight:"50px"}}
+                                    />
+                                </td>
+                                <td>{e.name}</td>
+                                <td>{e.genero}</td>
+                                <td>{e.categoria}</td>
+                                <td>{e.notaImdb}</td>
+                                <td>{e.dataLancamento}</td>
+                                <td>
+                                    <Button  onClick={()=>setShowEdit(!showEdit), ()=>searchMovieOnListToEdit(e.id)}className="mx-1" variant="warning"><i className="material-icons">mode_edit</i></Button>
+                                    <Button onClick={()=>setShowDelete(!showDelete), ()=>searchMovieOnList(e.id)} className="mx-1" variant="danger"><i className="material-icons">delete</i></Button>
+                                    <Button onClick={()=>setShowDetails(!showDetails), ()=>searchMovieOnListToDetails(e.id)} className="mx-1" variant="info"><i className="material-icons">preview</i></Button>
+                                </td>
+                            </tr>
                         ))
                     }
                 </tbody>

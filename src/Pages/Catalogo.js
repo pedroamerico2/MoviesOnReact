@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Container, Row, Button, Navbar, Nav, NavDropdown, FormControl, Form} from "react-bootstrap"
 
-import ModalAdd from "../Components/ModalAdd/ModalAdd"
+import ModalAdd from "../Components/Modals/ModalAdd"
 
 import Movies from "../Data/filmes.js"
 
@@ -11,19 +11,17 @@ import List from "../Components/Lista/Lista"
 import Footer from "../Components/DefaultComponents/Footer"
 
 export default function Catalog(){
+
+    const [showModalAdd, setShowModalAdd] = useState(false)
+
+    const [dataMovies, setDataMovies] = useState(Movies)
     
     const [listOrCards, setListOrCards] = useState(false)
 
     const [searchOnCatalog, setSerachOnCatalog] = useState("")
-
-    const [showModalAdd, setShowModalAdd] = useState(false)
-
-    const [categ, setCateg] = useState("")
-
-    const [genero, setGenero] = useState("")
-
+    const [filterCategory, setFilterCategory] = useState("")
+    const [filterGender, setFilterGender] = useState("")
     const [dateMin, setDateMin] = useState("")
-
     const [dateMax, setDateMax] = useState("")
 
     function teste (dateMin, dateMax){
@@ -34,7 +32,8 @@ export default function Catalog(){
         <>  <ModalAdd
                 show={showModalAdd}
                 onHide={() => setShowModalAdd(!showModalAdd)}
-                Movies={Movies}
+                dataMovies={dataMovies}
+                setDataMovies={setDataMovies}
             />
             <Header/>
             <Container className="w-80">
@@ -64,18 +63,18 @@ export default function Catalog(){
                         </Button>
                         
                         <NavDropdown title="Genero" id="collasible-nav-dropdown">
-                        <NavDropdown.Item onClick={()=>{setGenero("")}}>Todos</NavDropdown.Item>
-                            <NavDropdown.Item onClick={()=>{setGenero("acao")}}>Acao</NavDropdown.Item>
-                            <NavDropdown.Item onClick={()=>{setGenero("drama")}}>Drama</NavDropdown.Item>
-                            <NavDropdown.Item onClick={()=>{setGenero("crime")}}>Crime</NavDropdown.Item>
-                            <NavDropdown.Item onClick={()=>{setGenero("animacao")}}>Animacao</NavDropdown.Item>
-                            <NavDropdown.Item onClick={()=>{setGenero("comedia")}}>Comedia</NavDropdown.Item>
-                            <NavDropdown.Item onClick={()=>{setGenero("acao")}}>Aventura</NavDropdown.Item>
+                        <NavDropdown.Item onClick={()=>{setFilterGender("")}}>Todos</NavDropdown.Item>
+                            <NavDropdown.Item onClick={()=>{setFilterGender("acao")}}>Acao</NavDropdown.Item>
+                            <NavDropdown.Item onClick={()=>{setFilterGender("drama")}}>Drama</NavDropdown.Item>
+                            <NavDropdown.Item onClick={()=>{setFilterGender("crime")}}>Crime</NavDropdown.Item>
+                            <NavDropdown.Item onClick={()=>{setFilterGender("animacao")}}>Animacao</NavDropdown.Item>
+                            <NavDropdown.Item onClick={()=>{setFilterGender("comedia")}}>Comedia</NavDropdown.Item>
+                            <NavDropdown.Item onClick={()=>{setFilterGender("acao")}}>Aventura</NavDropdown.Item>
                         </NavDropdown>
                         <NavDropdown title="Categoria" id="collasible-nav-dropdown">
-                        <NavDropdown.Item onClick={()=>{setCateg("")}}>Todos</NavDropdown.Item>
-                            <NavDropdown.Item onClick={()=>{setCateg("filme")}}>Filme</NavDropdown.Item>
-                            <NavDropdown.Item onClick={()=>{setCateg("serie")}}>Serie</NavDropdown.Item>
+                        <NavDropdown.Item onClick={()=>{setFilterCategory("")}}>Todos</NavDropdown.Item>
+                            <NavDropdown.Item onClick={()=>{setFilterCategory("filme")}}>Filme</NavDropdown.Item>
+                            <NavDropdown.Item onClick={()=>{setFilterCategory("serie")}}>Serie</NavDropdown.Item>
                         </NavDropdown>
                         
                         <Form.Control style={{marginRight: "15px"}} type="date" value={dateMin} onChange={(element)=>{setDateMin(element.target.value)}}/>
@@ -89,9 +88,10 @@ export default function Catalog(){
                 <Row>
                     {
                         !listOrCards?
-                        <Cards searchOnCatalog={searchOnCatalog} categ={categ} dateMin={dateMin} dateMax={dateMax} genero={genero}/>
+                        <Cards setDataMovies={setDataMovies}
+                        dataMovies={dataMovies}searchOnCatalog={searchOnCatalog} filterCategory={filterCategory} dateMin={dateMin} dateMax={dateMax} filterGender={filterGender}/>
                         :
-                        <List searchOnCatalog={searchOnCatalog} categ={categ} dateMin={dateMin} dateMax={dateMax} genero={genero}/>
+                        <List setDataMovies={setDataMovies} dataMovies={dataMovies}searchOnCatalog={searchOnCatalog} filterCategory={filterCategory} dateMin={dateMin} dateMax={dateMax} filterGender={filterGender}/>
                     }
                 </Row>
             </Container>
