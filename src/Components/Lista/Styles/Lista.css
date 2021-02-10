@@ -1,0 +1,14 @@
+.orderIcon{
+    float:  right;
+    width: 10px;
+    height: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+    user-select: none;
+}
+.checkIcon{
+    width: 10px;
+    height: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+}

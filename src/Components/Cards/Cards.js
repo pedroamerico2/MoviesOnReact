@@ -1,16 +1,14 @@
 import React from "react"
 import {Card, ListGroup, ListGroupItem} from "react-bootstrap"
 
-import dataFilmes from "../../Data/filmes"
-
 export default function ModelCards(props){
 
-    const {searchOnCatalog, filterCategory, filterGender} = props;
+    const {searchOnCatalog, filterCategory, filterGender, dataMovies} = props;
 
     return(
         <>
             {
-            dataFilmes
+            dataMovies
             .filter((b)=>(
                 b.name.toUpperCase().indexOf(searchOnCatalog.toUpperCase()) !== -1 
             ))
@@ -23,7 +21,7 @@ export default function ModelCards(props){
             .sort((c,d)=>{
                     return d.notaImdb - c.notaImdb
             })
-            .map((a, index)=>(
+            .map((a)=>(
                 <div className="mx-auto mt-5">
                     <Card style={{ width: '20rem' }}>
                         <Card.Img variant="top" src={a.banner}/>

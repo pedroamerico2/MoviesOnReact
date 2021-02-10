@@ -6,13 +6,6 @@ export default function ModalDetails(props){
     function handleClose() {
         setShowDetails({ show: false });
     }
-    function handleCloseDetails(){
-
-        setShowDetails({ show: false })
-        
-    }
-    
-
 
     return(
         <>
@@ -47,7 +40,7 @@ export default function ModalDetails(props){
                         </Card>
                     </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="success" onClick={()=>handleCloseDetails()}>
+                    <Button variant="success" onClick={()=>handleClose()}>
                         Fechar
                     </Button>
                 </Modal.Footer>

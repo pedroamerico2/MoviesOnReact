@@ -29,7 +29,8 @@ export default function Catalog(){
     }
     
     return(
-        <>  <ModalAdd
+        <>  
+            <ModalAdd
                 show={showModalAdd}
                 onHide={() => setShowModalAdd(!showModalAdd)}
                 dataMovies={dataMovies}
@@ -69,7 +70,7 @@ export default function Catalog(){
                             <NavDropdown.Item onClick={()=>{setFilterGender("crime")}}>Crime</NavDropdown.Item>
                             <NavDropdown.Item onClick={()=>{setFilterGender("animacao")}}>Animacao</NavDropdown.Item>
                             <NavDropdown.Item onClick={()=>{setFilterGender("comedia")}}>Comedia</NavDropdown.Item>
-                            <NavDropdown.Item onClick={()=>{setFilterGender("acao")}}>Aventura</NavDropdown.Item>
+                            <NavDropdown.Item onClick={()=>{setFilterGender("aventura")}}>Aventura</NavDropdown.Item>
                         </NavDropdown>
                         <NavDropdown title="Categoria" id="collasible-nav-dropdown">
                         <NavDropdown.Item onClick={()=>{setFilterCategory("")}}>Todos</NavDropdown.Item>
@@ -77,8 +78,16 @@ export default function Catalog(){
                             <NavDropdown.Item onClick={()=>{setFilterCategory("serie")}}>Serie</NavDropdown.Item>
                         </NavDropdown>
                         
-                        <Form.Control style={{marginRight: "15px"}} type="date" value={dateMin} onChange={(element)=>{setDateMin(element.target.value)}}/>
-                        <Form.Control type="date" value={dateMax} onChange={(element)=>{setDateMax(element.target.value)}}/>
+                        <Form.Control 
+                            style={{marginRight: "15px"}} 
+                            type="date" value={dateMin} 
+                            onChange={(element)=>{setDateMin(element.target.value)}}
+                        />
+                        <Form.Control 
+                            type="date" 
+                            value={dateMax} 
+                            onChange={(element)=>{setDateMax(element.target.value)}}
+                        />
                         </Nav>
                         <Nav>
                             <FormControl type="text" placeholder="Search" className="mr-sm-2" value={searchOnCatalog} onChange={(e)=>setSerachOnCatalog(e.target.value)}/>
@@ -88,10 +97,24 @@ export default function Catalog(){
                 <Row>
                     {
                         !listOrCards?
-                        <Cards setDataMovies={setDataMovies}
-                        dataMovies={dataMovies}searchOnCatalog={searchOnCatalog} filterCategory={filterCategory} dateMin={dateMin} dateMax={dateMax} filterGender={filterGender}/>
+                        <Cards 
+                        setDataMovies={setDataMovies}
+                        dataMovies={dataMovies}
+                        searchOnCatalog={searchOnCatalog} 
+                        filterCategory={filterCategory} 
+                        dateMin={dateMin} 
+                        dateMax={dateMax} 
+                        filterGender={filterGender}
+                        />
                         :
-                        <List setDataMovies={setDataMovies} dataMovies={dataMovies}searchOnCatalog={searchOnCatalog} filterCategory={filterCategory} dateMin={dateMin} dateMax={dateMax} filterGender={filterGender}/>
+                        <List 
+                        setDataMovies={setDataMovies} 
+                        dataMovies={dataMovies}
+                        searchOnCatalog={searchOnCatalog} 
+                        filterCategory={filterCategory} 
+                        dateMin={dateMin} 
+                        dateMax={dateMax} 
+                        filterGender={filterGender}/>
                     }
                 </Row>
             </Container>

@@ -6,12 +6,7 @@ export default function ModalDelete(props){
     function handleClose() {
         setShowDelete({ show: false });
     }
-    function handleCloseDelete(){
-
-        setShowDelete({ show: false })
-        
-    }
-    function DeleteConfirmed(idMovie){ 
+    function DeleteConfirmed(){ 
             setDataMovies(dataMovies.filter((movie)=>movie.id !== showDelete.id
         ))
         setShowDelete({ show: false })
@@ -44,10 +39,10 @@ export default function ModalDelete(props){
                         </Card>
                     </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={()=>handleCloseDelete()}>
+                    <Button variant="secondary" onClick={()=>handleClose()}>
                         Cancelar
                     </Button>
-                    <Button variant="danger" onClick={()=>DeleteConfirmed(showDelete.id)}>
+                    <Button variant="danger" onClick={()=>DeleteConfirmed()}>
                         Deletar
                     </Button>
                 </Modal.Footer>

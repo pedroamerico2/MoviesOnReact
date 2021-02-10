@@ -1,9 +1,11 @@
 import React, {useState, useEffect} from "react"
-import {Table, Container,Button} from "react-bootstrap"
+import {Table, Container,Button, ToggleButton} from "react-bootstrap"
 
 import ModalDelete from "../Modals/ModalDelete"
 import ModalDetails from "../Modals/ModalDetails"
 import ModalEdit from "../Modals/ModalEdit"
+
+import "./Styles/Lista.css"
 
 
 export default function CatalogoLista(props){
@@ -14,37 +16,23 @@ export default function CatalogoLista(props){
     const [showDetails, setShowDetails] = useState(false)
     const [showEdit, setShowEdit] = useState(false)
     
-    const [maiorMenorNota, setMaiorMenorNota] = useState(false)
-
+    const [toggleOrderName, setToggleOrderName] = useState(false)
+    const [toggleOrderNota, setToggleOrderNota] = useState(false)
+    const [toggleCheckItem, setToggleCheckItem] = useState(false)
+    
     function searchMovieOnList(movieOnList) {
         const [movieFilter] = dataMovies.filter((d) => (d.id === movieOnList))
-        if (movieFilter) {
-            setShowDelete({
-                id: movieFilter.id,
-                name: movieFilter.name,
-                show: true,
-            });
-        } else {
-            alert("nada aqui")
-        }
-    }
-    function editData(id, banner, name, sinopse, categoria
-    ,genero){
-        setDataMovies(dataMovies.map((movie)=>{
-            if(movie.id === id){
-                return{
-                    id: movie.id,
-                    banner: movie.banner,
-                    name: name,
-                    sinopse: sinopse,
-                    categoria: categoria,
-                    genero: genero,
-                }
-            }else{
-                return {...movie}
+            if (movieFilter) {
+                setShowDelete({
+                    id: movieFilter.id,
+                    name: movieFilter.name,
+                    show: true,
+                });
+            } else {
+                alert("nada aqui")
             }
-        }))
     }
+    
 
     function searchMovieOnListToDetails(movieOnListDetails) {
         const [movieFilterDetails] = dataMovies.filter((d) => (d.id === movieOnListDetails))
@@ -78,8 +66,30 @@ export default function CatalogoLista(props){
         } else {
             alert("nada aqui")
         }
-
     }
+    function editData(id, banner, name, sinopse, categoria
+        ,genero){
+            setDataMovies(dataMovies.map((movie)=>{
+                if(movie.id === id){
+                    return{
+                        id: movie.id,
+                        bannerTop: movie.bannerTop,
+                        banner: banner,
+                        name: name,
+                        genero: genero,
+                        notaImdb: movie.notaImdb,
+                        sinopse: sinopse,
+                        dataLancamento: movie.dataLancamento,
+                        categoria: categoria,
+                        selected: false
+                    }
+                }else{
+                    return {...movie}
+                }
+            }))
+        }
+
+
     return(
         <Container className="w-80">
             <ModalDelete
@@ -98,23 +108,69 @@ export default function CatalogoLista(props){
                 showEdit={showEdit}
                 setShowEdit={setShowEdit}
                 editData={editData}
+                dataMovies={dataMovies}
+                setDataMovies={setDataMovies}
             />
             <Table striped bordered hover variant="dark" style={{marginTop: "15px"}}>
                 <thead>
                     <tr>
+                        <th>
+                            {
+                                !toggleCheckItem?
+                                <i className="checkIcon material-icons text-center" onClick={()=>setToggleCheckItem(!toggleCheckItem)}>
+                                    radio_button_unchecked
+                                </i>
+                                :
+                                <i className="checkIcon material-icons text-center" onClick={()=>setToggleCheckItem(!toggleCheckItem)}>
+                                    radio_button_checked
+                                </i>
+                            }
+                        </th>
                         <th>#</th>
                         <th>Banner</th>
-                        <th>Name</th>
+                        <th>Name&emsp; 
+                                {
+                                    !toggleOrderName?
+                                    <i className="orderIcon material-icons" onClick={()=>setToggleOrderName(!toggleOrderName)}>
+                                        keyboard_arrow_down
+                                    </i>  
+                                    :
+                                    <i className="orderIcon material-icons" onClick={()=>setToggleOrderName(!toggleOrderName)}>
+                                        keyboard_arrow_up
+                                    </i>  
+                                        
+                                }
+                            
+                        </th>
                         <th>Genero</th>
                         <th>Categoria</th>
-                        <th><a style={{cursor: "pointer",userSelect: "none" }} onClick={()=>setMaiorMenorNota(!maiorMenorNota)}>Nota IMDB</a></th>
+                        <th style={{width: "130px"}}>Nota IMDB 
+                                {
+                                    toggleOrderNota?
+                                    <i className="orderIcon material-icons" onClick={()=>setToggleOrderNota(!toggleOrderNota)}>
+                                        keyboard_arrow_down
+                                    </i>  
+                                    :
+                                    <i className="orderIcon material-icons" onClick={()=>setToggleOrderNota(!toggleOrderNota)}>
+                                        keyboard_arrow_up
+                                    </i>  
+                                        
+                                }
+                        </th>
                         <th>Data de Lancamento</th>
-                        <th className="text-center"> Acoes </th>
+                        <th className="text-center"style={{width: "200px"}}> Acoes </th>
                     </tr>
                 </thead>
                 <tbody>
                     {
                         dataMovies
+                        .sort((c,d)=>{
+                            if(toggleOrderNota === true){
+                                return c.notaImdb - d.notaImdb
+                            }else{
+                                return d.notaImdb - c.notaImdb
+                            } 
+                        })
                         .filter((a)=>(
                             a.name.toUpperCase().indexOf(searchOnCatalog.toUpperCase()) !== -1 ||
                             a.categoria.toUpperCase().indexOf(searchOnCatalog.toUpperCase()) !== -1 ||
@@ -126,15 +182,21 @@ export default function CatalogoLista(props){
                         .filter((elementCateg)=>(
                             elementCateg.categoria.toUpperCase().indexOf(filterCategory.toUpperCase()) !== -1
                         ))
-                        .sort((c,d)=>{
-                            if(maiorMenorNota === true){
-                                return c.notaImdb - d.notaImdb
-                            }else{
-                                return d.notaImdb - c.notaImdb
-                            } 
-                        })
                         .map((e,index)=>(
                             <tr>
+                                <td>
+                                    {
+                                        !toggleCheckItem?
+                                        <i className="checkIcon material-icons text-center" onClick={()=>setToggleCheckItem(!toggleCheckItem)}>
+                                            radio_button_unchecked
+                                        </i>
+                                        :
+                                        <i className="checkIcon material-icons text-center" onClick={()=>setToggleCheckItem(!toggleCheckItem)}>
+                                            radio_button_checked
+                                        </i>
+                                    }
+                                    
+                                </td>
                                 <td>{index+1}</td>
                                 <td>
                                     <img 

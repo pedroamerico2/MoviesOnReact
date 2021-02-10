@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import {Modal, Button, Card, ListGroup, ListGroupItem, FormControl, Form} from "react-bootstrap"
 
 export default function ModalEdit(props){
-    const {showEdit, setShowEdit, dataMovies, setDataMovies, editData} = props
+    const {showEdit, setShowEdit, dataMovies, setDataMovies, editData } = props
 
     const [id, setId] = useState("")
     const [banner, setBanner] = useState("")
@@ -15,43 +15,25 @@ export default function ModalEdit(props){
         setShowEdit({ show: false })
     }
 
-    function handleCloseEdit(banner, name, sinopse, categoria
+    function handleCloseEdit(id, banner, name, sinopse, categoria
         ,genero){
-        editData(banner, name, sinopse, categoria,genero);{
-                setDataMovies(dataMovies.map((movie)=>{
-                    if(movie.id === id){
-                        return{
-                            id: movie.id,
-                            bannerTop: movie.bannerTop,
-                            banner: banner,
-                            name: name,
-                            genero: genero,
-                            notaImdb: movie.notaImdb,
-                            sinopse: sinopse,
-                            dataLancamento: movie.dataLancamento,
-                            categoria: categoria
-                        }
-                    }else{
-                        return movie
-                    }
-                })) 
-            }
+        editData(id, banner, name, sinopse, categoria, genero);
         setShowEdit({ show: false });
     }
-    
+    //utilizando o use effect pra atribuir os valores ao iniciar o modal
     useEffect(()=>{ 
         setId(showEdit.id)
         setBanner(showEdit.banner)
-        setName(name)
+        setName(showEdit.name)
         setSinopse(showEdit.sinopse)
         setGenero(showEdit.genero)
         setCategoria(showEdit.categoria)
-    },[])
+    },[showEdit])
 
 
     return(
         <>
-            <Modal show={showEdit.show} onHide={handleClose()}>
+            <Modal show={showEdit.show} onHide={()=>handleClose()}>
                 <Modal.Header closeButton>
                     <Modal.Title>{"ID: " + showEdit.id + " - " + showEdit.name}</Modal.Title>
                 </Modal.Header>
@@ -108,7 +90,7 @@ export default function ModalEdit(props){
                     <Button variant="secondary" onClick={()=>handleClose()}>
                         Cancelar
                     </Button>
-                    <Button variant="success" onClick={()=>handleCloseEdit(banner, name, sinopse, categoria, genero)}>
+                    <Button variant="success" onClick={()=>handleCloseEdit(id, banner, name, sinopse, categoria, genero)}>
                         Salvar
                     </Button>
                 </Modal.Footer>
