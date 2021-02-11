@@ -14,7 +14,21 @@ export default function Catalog(){
 
     const [showModalAdd, setShowModalAdd] = useState(false)
 
-    const [dataMovies, setDataMovies] = useState(Movies)
+    const [dataMovies, setDataMovies] = useState(
+        Movies.map((movie)=>{
+        return({
+            id: movie.id,
+            bannerTop: movie.bannerTop,
+            banner: movie.banner,
+            name: movie.name,
+            genero: movie.genero,
+            notaImdb: movie.notaImdb,
+            sinopse: movie.sinopse,
+            dataLancamento: movie.dataLancamento,
+            categoria: movie.categoria,
+            active: false,
+        })                  
+    }))
     
     const [listOrCards, setListOrCards] = useState(false)
 
@@ -23,6 +37,11 @@ export default function Catalog(){
     const [filterGender, setFilterGender] = useState("")
     const [dateMin, setDateMin] = useState("")
     const [dateMax, setDateMax] = useState("")
+
+    function checkItemDelete(){
+        const movieSelectToDelete = dataMovies.filter((d) => !d.active)           
+            setDataMovies(movieSelectToDelete)
+    }
 
     function teste (dateMin, dateMax){
         alert(dateMin+"/"+dateMax)
@@ -50,6 +69,11 @@ export default function Catalog(){
                                     :
                                     "view_list"
                                 }
+                            </i>
+                        </Button>
+                        <Button variant="succcess" onClick={()=>checkItemDelete()}>
+                            <i className="material-icons" style={{color: "white"}}>
+                                delete
                             </i>
                         </Button>
                         <Button variant="succcess" onClick={()=>(setShowModalAdd(!showModalAdd))}>

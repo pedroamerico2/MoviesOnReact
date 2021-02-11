@@ -16,9 +16,10 @@ export default function CatalogoLista(props){
     const [showDetails, setShowDetails] = useState(false)
     const [showEdit, setShowEdit] = useState(false)
     
-    const [toggleOrderName, setToggleOrderName] = useState(false)
-    const [toggleOrderNota, setToggleOrderNota] = useState(false)
-    const [toggleCheckItem, setToggleCheckItem] = useState(false)
+    const [toggleOrderName, setToggleOrderName] = useState(0)
+    const [toggleOrderNota, setToggleOrderNota] = useState(0)
+
+    const [toggleCheckItem, setToggleCheckItem] = useState(true)
     
     function searchMovieOnList(movieOnList) {
         const [movieFilter] = dataMovies.filter((d) => (d.id === movieOnList))
@@ -32,8 +33,6 @@ export default function CatalogoLista(props){
                 alert("nada aqui")
             }
     }
-    
-
     function searchMovieOnListToDetails(movieOnListDetails) {
         const [movieFilterDetails] = dataMovies.filter((d) => (d.id === movieOnListDetails))
         if (movieFilterDetails) {
@@ -67,8 +66,7 @@ export default function CatalogoLista(props){
             alert("nada aqui")
         }
     }
-    function editData(id, banner, name, sinopse, categoria
-        ,genero){
+    function editData(id, banner, name, sinopse, categoria ,genero){
             setDataMovies(dataMovies.map((movie)=>{
                 if(movie.id === id){
                     return{
@@ -81,15 +79,32 @@ export default function CatalogoLista(props){
                         sinopse: sinopse,
                         dataLancamento: movie.dataLancamento,
                         categoria: categoria,
-                        selected: false
                     }
                 }else{
                     return {...movie}
                 }
             }))
         }
+        
+        function checkItem(id){
+            console.log(dataMovies)
+            setDataMovies(dataMovies.map((movie)=>{
+                if(movie.id === id){  
+                    return {...movie, active: !movie.active}
+                }else{
+                    return movie
+                }
+            }))
+        }
+        function checkItemAll(){
+            setToggleCheckItem(!toggleCheckItem)
+            setDataMovies(dataMovies.map((movie)=>{
+                return {...movie, active: toggleCheckItem}
+            }))
+        }
+           
 
-
+    
     return(
         <Container className="w-80">
             <ModalDelete
@@ -116,45 +131,51 @@ export default function CatalogoLista(props){
                     <tr>
                         <th>
                             {
-                                !toggleCheckItem?
-                                <i className="checkIcon material-icons text-center" onClick={()=>setToggleCheckItem(!toggleCheckItem)}>
+                                toggleCheckItem?
+                                <i className="checkIcon material-icons text-center" onClick={()=>checkItemAll()}>
                                     radio_button_unchecked
                                 </i>
                                 :
-                                <i className="checkIcon material-icons text-center" onClick={()=>setToggleCheckItem(!toggleCheckItem)}>
+                                <i className="checkIcon material-icons text-center" onClick={()=>checkItemAll()}>
                                     radio_button_checked
                                 </i>
                             }
                         </th>
                         <th>#</th>
                         <th>Banner</th>
-                        <th>Name&emsp; 
+                        <th>Name 
                                 {
-                                    !toggleOrderName?
-                                    <i className="orderIcon material-icons" onClick={()=>setToggleOrderName(!toggleOrderName)}>
+                                    toggleOrderName === 1?
+                                    <i className="orderIcon material-icons" onClick={()=>setToggleOrderName(2)}>
                                         keyboard_arrow_down
                                     </i>  
-                                    :
-                                    <i className="orderIcon material-icons" onClick={()=>setToggleOrderName(!toggleOrderName)}>
+                                    :toggleOrderName === 2?
+                                    <i className="orderIcon material-icons" onClick={()=>setToggleOrderName(0)}>
                                         keyboard_arrow_up
-                                    </i>  
-                                        
+                                    </i>
+                                    :toggleOrderName === 0&&
+                                    <i className="orderIcon material-icons" onClick={()=>setToggleOrderName(1)}>
+                                        remove
+                                    </i>       
                                 }
-                            
                         </th>
                         <th>Genero</th>
                         <th>Categoria</th>
                         <th style={{width: "130px"}}>Nota IMDB 
                                 {
-                                    toggleOrderNota?
-                                    <i className="orderIcon material-icons" onClick={()=>setToggleOrderNota(!toggleOrderNota)}>
+                                    toggleOrderNota === 1?
+                                    <i className="orderIcon material-icons" onClick={()=>setToggleOrderNota(2)}>
                                         keyboard_arrow_down
                                     </i>  
-                                    :
-                                    <i className="orderIcon material-icons" onClick={()=>setToggleOrderNota(!toggleOrderNota)}>
+                                    :toggleOrderNota === 2?
+                                    <i className="orderIcon material-icons" onClick={()=>setToggleOrderNota(0)}>
                                         keyboard_arrow_up
                                     </i>  
-                                        
+                                    :toggleOrderNota === 0&&
+                                    <i className="orderIcon material-icons" onClick={()=>setToggleOrderNota(1)}>
+                                        remove
+                                    </i>  
+                                    
                                 }
                         </th>
                         <th>Data de Lancamento</th>
@@ -164,12 +185,33 @@ export default function CatalogoLista(props){
                 <tbody>
                     {
                         dataMovies
-                        .sort((c,d)=>{
-                            if(toggleOrderNota === true){
-                                return c.notaImdb - d.notaImdb
-                            }else{
-                                return d.notaImdb - c.notaImdb
-                            } 
+                        .sort((Movie1,Movie2)=>{
+                            if(toggleOrderName === 1){
+                                if(Movie1.name > Movie2.name){
+                                    return -1
+                                }
+                                if(Movie1.name < Movie2.name){
+                                    return 1
+                                }
+                                return 0
+                            }if(toggleOrderName === 2){
+                                if(Movie1.name > Movie2.name){
+                                    return 1
+                                }
+                                if(Movie1.name < Movie2.name){
+                                    return -1
+                                }
+                                return 0
+                            }
+                            
+                        })
+                        .sort((Movie1,Movie2)=>{
+                            if(toggleOrderNota === 1){
+                                return Movie1.notaImdb - Movie2.notaImdb
+                            }if(toggleOrderNota === 2){
+                                return Movie2.notaImdb - Movie1.notaImdb
+                            }
+                            return 0 
                         })
                         .filter((a)=>(
                             a.name.toUpperCase().indexOf(searchOnCatalog.toUpperCase()) !== -1 ||
@@ -186,13 +228,13 @@ export default function CatalogoLista(props){
                             <tr>
                                 <td>
                                     {
-                                        !toggleCheckItem?
-                                        <i className="checkIcon material-icons text-center" onClick={()=>setToggleCheckItem(!toggleCheckItem)}>
-                                            radio_button_unchecked
+                                        e.active?
+                                        <i className="checkIcon material-icons text-center" onClick={()=>checkItem(e.id)}>
+                                            radio_button_checked
                                         </i>
                                         :
-                                        <i className="checkIcon material-icons text-center" onClick={()=>setToggleCheckItem(!toggleCheckItem)}>
-                                            radio_button_checked
+                                        <i className="checkIcon material-icons text-center" onClick={()=>checkItem(e.id)}>
+                                            radio_button_unchecked
                                         </i>
                                     }
                                     
