@@ -85,7 +85,6 @@ export default function CatalogoLista(props){
                 }
             }))
         }
-        
         function checkItem(id){
             console.log(dataMovies)
             setDataMovies(dataMovies.map((movie)=>{
@@ -102,9 +101,6 @@ export default function CatalogoLista(props){
                 return {...movie, active: toggleCheckItem}
             }))
         }
-           
-
-    
     return(
         <Container className="w-80">
             <ModalDelete
@@ -174,8 +170,7 @@ export default function CatalogoLista(props){
                                     :toggleOrderNota === 0&&
                                     <i className="orderIcon material-icons" onClick={()=>setToggleOrderNota(1)}>
                                         remove
-                                    </i>  
-                                    
+                                    </i>   
                                 }
                         </th>
                         <th>Data de Lancamento</th>
@@ -202,8 +197,7 @@ export default function CatalogoLista(props){
                                     return -1
                                 }
                                 return 0
-                            }
-                            
+                            }  
                         })
                         .sort((Movie1,Movie2)=>{
                             if(toggleOrderNota === 1){
@@ -261,7 +255,6 @@ export default function CatalogoLista(props){
                     }
                 </tbody>
             </Table>
-        </Container>
-            
+        </Container>       
     )
 }
