@@ -86,7 +86,6 @@ export default function CatalogoLista(props){
             }))
         }
         function checkItem(id){
-            console.log(dataMovies)
             setDataMovies(dataMovies.map((movie)=>{
                 if(movie.id === id){  
                     return {...movie, active: !movie.active}

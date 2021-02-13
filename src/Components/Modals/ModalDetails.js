@@ -15,7 +15,7 @@ export default function ModalDetails(props){
                 show={showDetails.show}
                 onHide={handleClose}
                 centered
-            ></Modal>
+            />
             <Modal show={showDetails.show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>{"ID: " + showDetails.id + " - " + showDetails.name}</Modal.Title>

@@ -143,6 +143,7 @@ export default function Catalog(){
                 </Row>
             </Container>
             <Footer/>
+            
         </>
     )
 }

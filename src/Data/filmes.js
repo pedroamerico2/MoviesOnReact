@@ -7,7 +7,7 @@ const Filmes = [
             genero: "animacao", 
             notaImdb: 8.1 , 
             sinopse:"After landing the gig of a lifetime, a New York jazz pianist suddenly finds himself trapped in a strange land between Earth and the afterlife.", 
-            dataLancamento:"2020", 
+            dataLancamento:"2020-12-21", 
             categoria:"filme"
         },
         {
@@ -18,7 +18,7 @@ const Filmes = [
             genero: "drama", 
             notaImdb:8.6, 
             sinopse:"Orphaned at the tender age of nine, prodigious introvert Beth Harmon discovers and masters the game of chess in 1960s USA. But child stardom comes at a price.", 
-            dataLancamento:"2020", 
+            dataLancamento:"2020-12-01", 
             categoria:"filme"
         },
         {
@@ -29,7 +29,7 @@ const Filmes = [
             genero: "drama", 
             notaImdb:7.2, 
             sinopse:"The epic journey of a poor Indian driver who must use his wit and cunning to break free from servitude to his rich masters and rise to the top of the heap.", 
-            dataLancamento:"2020", 
+            dataLancamento:"2020-12-18", 
             categoria:"filme"
         
         },
@@ -41,7 +41,7 @@ const Filmes = [
             genero: "acao", 
             notaImdb:7.5, 
             sinopse:"Armed with only one word, Tenet, and fighting for the survival of the entire world, a Protagonist journeys through a twilight world of international espionage on a mission that will unfold in something beyond real time.", 
-            dataLancamento:"2020", 
+            dataLancamento:"2020-12-10", 
             categoria:"filme"
         },
         {
@@ -52,7 +52,7 @@ const Filmes = [
             genero: "crime", 
             notaImdb:7.7, 
             sinopse:"An alcoholic professor who is sent to a juvenile school, where he clashes with a gangster, who uses the children of the school for criminal activities.", 
-            dataLancamento:"2021", 
+            dataLancamento:"2021-12-06", 
             categoria:"filme"
         },
         {
@@ -63,7 +63,7 @@ const Filmes = [
             genero: "acao", 
             notaImdb:7.7, 
             sinopse:"Inspired by the adventures of Arsène Lupin, gentleman thief Assane Diop sets out to avenge his father for an injustice inflicted by a wealthy family.", 
-            dataLancamento:"2021", 
+            dataLancamento:"2021-12-23", 
             categoria:"filme"
         },
         {
@@ -74,7 +74,7 @@ const Filmes = [
             genero: "acao",
             notaImdb:7.5, 
             sinopse:"Blends the style of classic sitcoms with the MCU in which Wanda Maximoff and Vision -two super-powered beings living their ideal suburban lives-begin to suspect that everything is not as it seems.", 
-            dataLancamento:"2021", 
+            dataLancamento:"2021-12-21", 
             categoria:"filme"
         },
         {
@@ -85,7 +85,7 @@ const Filmes = [
             genero: "drama", 
             notaImdb:7.4 , 
             sinopse:"Wealth, lust, and betrayal set against the backdrop of Regency-era England, seen through the eyes of the powerful Bridgerton family.", 
-            dataLancamento:"2020", 
+            dataLancamento:"2020-12-21", 
             categoria:"filme"
         },
         {
@@ -96,7 +96,7 @@ const Filmes = [
             genero: "comedia", 
             notaImdb:8.6 , 
             sinopse:"Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.", 
-            dataLancamento:"2019", 
+            dataLancamento:"2019-12-21", 
             categoria:"filme"
         },
         {
@@ -107,7 +107,7 @@ const Filmes = [
             genero: "crime", 
             notaImdb:7.5, 
             sinopse:"A young woman, traumatized by a tragic event in her past, seeks out vengeance against those who crossed her path.", 
-            dataLancamento:"2020", 
+            dataLancamento:"2020-12-21", 
             categoria:"filme"
         },
         {
@@ -118,7 +118,7 @@ const Filmes = [
             genero: "aventura", 
             notaImdb:8.8, 
             sinopse:"The travels of a lone bounty hunter in the outer reaches of the galaxy, far from the authority of the New Republic.", 
-            dataLancamento:"2020", 
+            dataLancamento:"2020-12-21", 
             categoria:"filme"
         },
         {
@@ -129,7 +129,7 @@ const Filmes = [
             genero: "animacao", 
             notaImdb:8.9, 
             sinopse:"After his hometown is destroyed and his mother is killed, young Eren Jaeger vows to cleanse the earth of the giant humanoid Titans that have brought humanity to the brink of extinction.", 
-            dataLancamento:"2013", 
+            dataLancamento:"2013-12-21", 
             categoria:"filme"
         },
         {
@@ -140,7 +140,7 @@ const Filmes = [
             genero: "crime", 
             notaImdb: 8.1, 
             sinopse:"When Washington Post journalist Jamal Khashoggi disappears in Istanbul, his fiancée and dissidents around the world piece together the clues to a murder and expose a global cover up.", 
-            dataLancamento:"2021", 
+            dataLancamento:"2021-12-21", 
             categoria:"filme"
         },
         {
@@ -151,7 +151,7 @@ const Filmes = [
             genero: "drama", 
             notaImdb:8.5, 
             sinopse:"In Gotham City, mentally troubled comedian Arthur Fleck is disregarded and mistreated by society. He then embarks on a downward spiral of revolution and bloody crime. This path brings him face-to-face with his alter-ego: the Joker", 
-            dataLancamento:"2019", 
+            dataLancamento:"2019-12-21", 
             categoria:"filme"
         },
         {
@@ -162,7 +162,7 @@ const Filmes = [
             genero: "drama", 
             notaImdb:9.5, 
             sinopse:"A high school chemistry teacher diagnosed with inoperable lung cancer turns to manufacturing and selling methamphetamine in order to secure his family's future.", 
-            dataLancamento:"2008", 
+            dataLancamento:"2008-12-21", 
             categoria:"serie"
         },
         {
@@ -173,7 +173,7 @@ const Filmes = [
             genero: "drama", 
             notaImdb:9.3, 
             sinopse:"Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.", 
-            dataLancamento:"1994", 
+            dataLancamento:"1994-12-21", 
             categoria:"filme"
         },
         {
@@ -184,7 +184,7 @@ const Filmes = [
             genero: "drama", 
             notaImdb:9.3, 
             sinopse:"Nine noble families fight for control over the lands of Westeros, while an ancient enemy returns after being dormant for millennia.", 
-            dataLancamento:"2011", 
+            dataLancamento:"2011-12-21", 
             categoria:"serie"
         },
         {
@@ -195,7 +195,7 @@ const Filmes = [
             genero: "comedia", 
             notaImdb:7.9, 
             sinopse:"A detective investigates the death of a patriarch of an eccentric, combative family.", 
-            dataLancamento:"2019", 
+            dataLancamento:"2019-12-21", 
             categoria:"filme"
         },
         {
@@ -206,7 +206,7 @@ const Filmes = [
             genero: "acao", 
             notaImdb:9.0, 
             sinopse:"When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.", 
-            dataLancamento:"2008", 
+            dataLancamento:"2008-12-21", 
             categoria:"filme"
         },
         {
@@ -217,7 +217,7 @@ const Filmes = [
             genero: "acao", 
             notaImdb:8.4, 
             sinopse:"After the devastating events of Vingadores: Guerra Infinita (2018), the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos' actions and restore balance to the universe.", 
-            dataLancamento:"2019", 
+            dataLancamento:"2019-12-21", 
             categoria:"filme"
         },
         {
@@ -228,7 +228,7 @@ const Filmes = [
             genero: "drama", 
             notaImdb:7.1, 
             sinopse:"When a young mother's home birth ends in unfathomable tragedy, she begins a year-long odyssey of mourning that fractures relationships with loved ones in this deeply personal story of a woman learning to live alongside her loss.", 
-            dataLancamento:"2021", 
+            dataLancamento:"2021-12-21", 
             categoria:"filme"
         },
         {
@@ -239,7 +239,7 @@ const Filmes = [
             genero: "aventura", 
             notaImdb:8.6, 
             sinopse:"https://m.media-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UX182_CR0,0,182,268_AL_.jpg", 
-            dataLancamento:"2014", 
+            dataLancamento:"2014-12-21", 
             categoria:"filme"
         },
         {
@@ -250,7 +250,7 @@ const Filmes = [
             genero: "drama", 
             notaImdb:8.3, 
             sinopse:"April 6th, 1917. As a regiment assembles to wage war deep in enemy territory, two soldiers are assigned to race against time and deliver a message that will stop 1,600 men from walking straight into a deadly trap.", 
-            dataLancamento:"2020", 
+            dataLancamento:"2020-12-21", 
             categoria:"filme"
         },
         {
@@ -261,7 +261,7 @@ const Filmes = [
             genero: "acao", 
             notaImdb:8.8, 
             sinopse:"A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.", 
-            dataLancamento:"2010", 
+            dataLancamento:"2010-12-21", 
             categoria:"filme"
         },
         {
@@ -272,7 +272,7 @@ const Filmes = [
             genero: "crime", 
             notaImdb:8.2, 
             sinopse:"Based on the true story of Jordan Belfort, from his rise to a wealthy stock-broker living the high life to his fall involving crime, corruption and the federal government.", 
-            dataLancamento:"2014", 
+            dataLancamento:"2014-12-21", 
             categoria:"filme"
         },
         {
@@ -283,7 +283,7 @@ const Filmes = [
             genero: "drama", 
             notaImdb:8.8, 
             sinopse:"The presidencies of Kennedy and Johnson, the events of Vietnam, Watergate and other historical events unfold through the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart.", 
-            dataLancamento:"1994", 
+            dataLancamento:"1994-12-21", 
             categoria:"filme"
         },
         {
@@ -294,7 +294,7 @@ const Filmes = [
             genero: "acao", 
             notaImdb:8.6, 
             sinopse:"Decades after their 1984 All Valley Karate Tournament bout, a middle-aged Daniel LaRusso and Johnny Lawrence find themselves martial-arts rivals again.", 
-            dataLancamento:"2018", 
+            dataLancamento:"2018-12-21", 
             categoria:"serie"
         },
         {
@@ -305,7 +305,7 @@ const Filmes = [
             genero: "crime", 
             notaImdb:9.2, 
             sinopse:"An organized crime dynasty's aging patriarch transfers control of his clandestine empire to his reluctant son.", 
-            dataLancamento:"1972", 
+            dataLancamento:"1972-12-21", 
             categoria:"filme"
         },
         {
@@ -316,7 +316,7 @@ const Filmes = [
             genero: "comedia", 
             notaImdb:7.8, 
             sinopse:"Four friends, all high school teachers, test a theory that they will improve their lives by maintaining a constant level of alcohol in their blood.", 
-            dataLancamento:"2020", 
+            dataLancamento:"2020-12-21", 
             categoria:"filme"
         },
         {
@@ -327,7 +327,7 @@ const Filmes = [
             genero: "acao", 
             notaImdb:7.4, 
             sinopse:"When a pilot crashes and tells of conflict in the outside world, Diana, an Amazonian warrior in training, leaves home to fight a war, discovering her full powers and true destiny.", 
-            dataLancamento:"2017", 
+            dataLancamento:"2017-12-21", 
             categoria:"filme"
         }
 

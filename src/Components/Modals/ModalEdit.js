@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import {Modal, Button, Card, ListGroup, ListGroupItem, FormControl, Form} from "react-bootstrap"
 
 export default function ModalEdit(props){
-    const {showEdit, setShowEdit, dataMovies, setDataMovies, editData } = props
+    const {showEdit, setShowEdit, editData } = props
 
     const [id, setId] = useState("")
     const [banner, setBanner] = useState("")
