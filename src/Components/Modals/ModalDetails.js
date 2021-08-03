@@ -18,25 +18,31 @@ export default function ModalDetails(props){
             />
             <Modal show={showDetails.show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>{"ID: " + showDetails.id + " - " + showDetails.name}</Modal.Title>
+                    <Modal.Title>{"ID: " + showDetails.id + " - " + showDetails.tipo}</Modal.Title>
                 </Modal.Header>
                     <Modal.Body className="mx-auto">
                         <Card style={{ width: '20rem' }}>
-                            <Card.Img variant="top" src={showDetails.banner}/>
                             <Card.Body>
-                                <Card.Title>{showDetails.name}</Card.Title>
-                                <Card.Text>
-                                    {showDetails.sinopse}
-                                </Card.Text>
+                                {
+                                    showDetails.titulacao!==""? 
+                                    <Card.Title>{showDetails.name +" - "+ showDetails.titulacao}</Card.Title>: 
+                                    <Card.Title>{showDetails.name}</Card.Title>
+                                }
+                                
                             </Card.Body>
                             <ListGroup className="list-group-flush">
-                                <ListGroupItem>{showDetails.genero}</ListGroupItem>
-                                <ListGroupItem>{showDetails.categoria}</ListGroupItem>
+                                <ListGroupItem><b>Cpf: </b>{showDetails.cpf}</ListGroupItem>
+                                {
+                                    showDetails.tipo==="medico"?
+                                    <ListGroupItem><b>Crm: </b> {showDetails.crm}</ListGroupItem>
+                                    :
+                                    <div>
+                                        <ListGroupItem><b>Data de Nascimento: </b>{showDetails.dataNascimento}</ListGroupItem>
+                                        <ListGroupItem><b>Cor:</b> {showDetails.cor}</ListGroupItem>
+                                    </div>
+                                    
+                                }
                             </ListGroup>
-                            <Card.Body>
-                                <Card.Link href="#">Card Link</Card.Link>
-                                <Card.Link href="#">Another Link</Card.Link>
-                            </Card.Body>
                         </Card>
                     </Modal.Body>
                 <Modal.Footer>

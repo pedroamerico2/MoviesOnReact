@@ -27,11 +27,10 @@ export default function ModalDelete(props){
                     <Modal.Title>{"ID: " + showDelete.id + " - " + showDelete.name}</Modal.Title>
                 </Modal.Header>
                     <Modal.Body className="mx-auto">
-                        <img className="" style={{width: "100px", height: "100px", marginLeft: "170px"}}
+                        <img className="" style={{width: "100px", height: "100px", marginLeft: "100px"}}
                         src="https://cdn.picpng.com/delete/cancel-delete-cross-check-box-98388.png"
                         />
-                        <p className="text-center"style={{fontSize: "40px"}}>Are You Sure ?</p>
-                        <p className="text-center">do you really want to delete this movie ? this process can be undone with refresh this page</p>
+                        <p className="text-center"style={{fontSize: "40px"}}>Remover ?</p>
                         <Card className="text-center mx-auto" style={{ width: '20rem' }}>
                             <Card.Body>
                                 <Card.Title>{showDelete.name}</Card.Title>

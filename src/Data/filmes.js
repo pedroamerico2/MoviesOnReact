@@ -1,335 +1,59 @@
 const Filmes = [
-        {
-            id: 1, 
-            bannerTop: "https://thumbs.dreamstime.com/b/eye-vision-test-banner-line-icons-set-infographics-vector-signs-eye-vision-test-banner-line-icons-set-infographics-vector-signs-106198263.jpg", 
-            banner:"https://m.media-amazon.com/images/M/MV5BZGE1MDg5M2MtNTkyZS00MTY5LTg1YzUtZTlhZmM1Y2EwNmFmXkEyXkFqcGdeQXVyNjA3OTI0MDc@._V1_UX182_CR0,0,182,268_AL_.jpg", 
-            name: "Soul", 
-            genero: "animacao", 
-            notaImdb: 8.1 , 
-            sinopse:"After landing the gig of a lifetime, a New York jazz pianist suddenly finds himself trapped in a strange land between Earth and the afterlife.", 
-            dataLancamento:"2020-12-21", 
-            categoria:"filme"
-        },
-        {
-            id: 2, 
-            bannerTop: "https://thumbs.dreamstime.com/b/eye-vision-test-banner-line-icons-set-infographics-vector-signs-eye-vision-test-banner-line-icons-set-infographics-vector-signs-106198263.jpg", 
-            banner:"https://m.media-amazon.com/images/M/MV5BM2EwMmRhMmUtMzBmMS00ZDQ3LTg4OGEtNjlkODk3ZTMxMmJlXkEyXkFqcGdeQXVyMjM5ODk1NDU@._V1_UX182_CR0,0,182,268_AL_.jpg", 
-            name: "O Gambito da Rainha", 
-            genero: "drama", 
-            notaImdb:8.6, 
-            sinopse:"Orphaned at the tender age of nine, prodigious introvert Beth Harmon discovers and masters the game of chess in 1960s USA. But child stardom comes at a price.", 
-            dataLancamento:"2020-12-01", 
-            categoria:"filme"
-        },
-        {
-            id: 3, 
-            bannerTop: "https://thumbs.dreamstime.com/b/eye-vision-test-banner-line-icons-set-infographics-vector-signs-eye-vision-test-banner-line-icons-set-infographics-vector-signs-106198263.jpg", 
-            banner:"https://m.media-amazon.com/images/M/MV5BMDVkMDRkMzItN2EyYS00ZTI5LTljYzgtNzRmZDQ0OTQ3M2VjXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_UX182_CR0,0,182,268_AL_.jpg", 
-            name: "O Tigre Branco", 
-            genero: "drama", 
-            notaImdb:7.2, 
-            sinopse:"The epic journey of a poor Indian driver who must use his wit and cunning to break free from servitude to his rich masters and rise to the top of the heap.", 
-            dataLancamento:"2020-12-18", 
-            categoria:"filme"
-        
-        },
-        {
-            id: 4, 
-            bannerTop: "https://thumbs.dreamstime.com/b/eye-vision-test-banner-line-icons-set-infographics-vector-signs-eye-vision-test-banner-line-icons-set-infographics-vector-signs-106198263.jpg", 
-            banner:"https://m.media-amazon.com/images/M/MV5BYzg0NGM2NjAtNmIxOC00MDJmLTg5ZmYtYzM0MTE4NWE2NzlhXkEyXkFqcGdeQXVyMTA4NjE0NjEy._V1_UX182_CR0,0,182,268_AL_.jpg", 
-            name: "Tenet", 
-            genero: "acao", 
-            notaImdb:7.5, 
-            sinopse:"Armed with only one word, Tenet, and fighting for the survival of the entire world, a Protagonist journeys through a twilight world of international espionage on a mission that will unfold in something beyond real time.", 
-            dataLancamento:"2020-12-10", 
-            categoria:"filme"
-        },
-        {
-            id: 5, 
-            bannerTop: "https://thumbs.dreamstime.com/b/eye-vision-test-banner-line-icons-set-infographics-vector-signs-eye-vision-test-banner-line-icons-set-infographics-vector-signs-106198263.jpg", 
-            banner:"https://m.media-amazon.com/images/M/MV5BNmU1OTYzYzAtMDcyOS00MDI0LTg2ZmQtYTEyMDdmMmQ0MjY5XkEyXkFqcGdeQXVyOTk3NTc2MzE@._V1_UY268_CR9,0,182,268_AL_.jpg", 
-            name: "Master", 
-            genero: "crime", 
-            notaImdb:7.7, 
-            sinopse:"An alcoholic professor who is sent to a juvenile school, where he clashes with a gangster, who uses the children of the school for criminal activities.", 
-            dataLancamento:"2021-12-06", 
-            categoria:"filme"
-        },
-        {
-            id: 6, 
-            bannerTop: "https://thumbs.dreamstime.com/b/eye-vision-test-banner-line-icons-set-infographics-vector-signs-eye-vision-test-banner-line-icons-set-infographics-vector-signs-106198263.jpg", 
-            banner:"https://m.media-amazon.com/images/M/MV5BNzRlNGUzMmEtYTg0Ni00N2U2LTg4YWEtNDdlNmMwYjBlZDQ0XkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_UX182_CR0,0,182,268_AL_.jpg", 
-            name: "Lupin", 
-            genero: "acao", 
-            notaImdb:7.7, 
-            sinopse:"Inspired by the adventures of Arsène Lupin, gentleman thief Assane Diop sets out to avenge his father for an injustice inflicted by a wealthy family.", 
-            dataLancamento:"2021-12-23", 
-            categoria:"filme"
-        },
-        {
-            id: 7, 
-            bannerTop: "https://thumbs.dreamstime.com/b/eye-vision-test-banner-line-icons-set-infographics-vector-signs-eye-vision-test-banner-line-icons-set-infographics-vector-signs-106198263.jpg", 
-            banner:"https://m.media-amazon.com/images/M/MV5BYjJiZmE5ZDgtYWUxZi00MWI1LTg2MmEtZmUwZGE2YzRkNTE5XkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_UX182_CR0,0,182,268_AL_.jpg", 
-            name: "WandaVision", 
-            genero: "acao",
-            notaImdb:7.5, 
-            sinopse:"Blends the style of classic sitcoms with the MCU in which Wanda Maximoff and Vision -two super-powered beings living their ideal suburban lives-begin to suspect that everything is not as it seems.", 
-            dataLancamento:"2021-12-21", 
-            categoria:"filme"
-        },
-        {
-            id: 8, 
-            bannerTop: "https://thumbs.dreamstime.com/b/eye-vision-test-banner-line-icons-set-infographics-vector-signs-eye-vision-test-banner-line-icons-set-infographics-vector-signs-106198263.jpg", 
-            banner:"https://m.media-amazon.com/images/M/MV5BYjIxMzZhMTMtNDQ1Mi00OTMwLTk2M2ItYzA0YmNjNDFlOTdhXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_UX182_CR0,0,182,268_AL_.jpg", 
-            name: "Bridgerton", 
-            genero: "drama", 
-            notaImdb:7.4 , 
-            sinopse:"Wealth, lust, and betrayal set against the backdrop of Regency-era England, seen through the eyes of the powerful Bridgerton family.", 
-            dataLancamento:"2020-12-21", 
-            categoria:"filme"
-        },
-        {
-            id: 9, 
-            bannerTop: "https://thumbs.dreamstime.com/b/eye-vision-test-banner-line-icons-set-infographics-vector-signs-eye-vision-test-banner-line-icons-set-infographics-vector-signs-106198263.jpg", 
-            banner:"https://m.media-amazon.com/images/M/MV5BYWZjMjk3ZTItODQ2ZC00NTY5LWE0ZDYtZTI3MjcwN2Q5NTVkXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_UX182_CR0,0,182,268_AL_.jpg", 
-            name: "Parasita", 
-            genero: "comedia", 
-            notaImdb:8.6 , 
-            sinopse:"Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.", 
-            dataLancamento:"2019-12-21", 
-            categoria:"filme"
-        },
-        {
-            id: 10, 
-            bannerTop: "https://thumbs.dreamstime.com/b/eye-vision-test-banner-line-icons-set-infographics-vector-signs-eye-vision-test-banner-line-icons-set-infographics-vector-signs-106198263.jpg", 
-            banner:"https://m.media-amazon.com/images/M/MV5BZDViMzBiNGMtZTIyNS00NzI4LWE3NDMtNmM1NDk0NzBlMWRlXkEyXkFqcGdeQXVyMTA2MDU0NjM5._V1_UX182_CR0,0,182,268_AL_.jpg", 
-            name: "Promissing young Woman", 
-            genero: "crime", 
-            notaImdb:7.5, 
-            sinopse:"A young woman, traumatized by a tragic event in her past, seeks out vengeance against those who crossed her path.", 
-            dataLancamento:"2020-12-21", 
-            categoria:"filme"
-        },
-        {
-            id: 11, 
-            bannerTop: "https://thumbs.dreamstime.com/b/eye-vision-test-banner-line-icons-set-infographics-vector-signs-eye-vision-test-banner-line-icons-set-infographics-vector-signs-106198263.jpg", 
-            banner:"https://m.media-amazon.com/images/M/MV5BZDhlMzY0ZGItZTcyNS00ZTAxLWIyMmYtZGQ2ODg5OWZiYmJkXkEyXkFqcGdeQXVyODkzNTgxMDg@._V1_UX182_CR0,0,182,268_AL_.jpg", 
-            name: "O Mandaloriano", 
-            genero: "aventura", 
-            notaImdb:8.8, 
-            sinopse:"The travels of a lone bounty hunter in the outer reaches of the galaxy, far from the authority of the New Republic.", 
-            dataLancamento:"2020-12-21", 
-            categoria:"filme"
-        },
-        {
-            id: 12, 
-            bannerTop: "https://thumbs.dreamstime.com/b/eye-vision-test-banner-line-icons-set-infographics-vector-signs-eye-vision-test-banner-line-icons-set-infographics-vector-signs-106198263.jpg", 
-            banner:"https://m.media-amazon.com/images/M/MV5BMTY5ODk1NzUyMl5BMl5BanBnXkFtZTgwMjUyNzEyMTE@._V1_UX182_CR0,0,182,268_AL_.jpg", 
-            name: "Ataque dos Titãs", 
-            genero: "animacao", 
-            notaImdb:8.9, 
-            sinopse:"After his hometown is destroyed and his mother is killed, young Eren Jaeger vows to cleanse the earth of the giant humanoid Titans that have brought humanity to the brink of extinction.", 
-            dataLancamento:"2013-12-21", 
-            categoria:"filme"
-        },
-        {
-            id: 13, 
-            bannerTop: "https://thumbs.dreamstime.com/b/eye-vision-test-banner-line-icons-set-infographics-vector-signs-eye-vision-test-banner-line-icons-set-infographics-vector-signs-106198263.jpg", 
-            banner:"https://m.media-amazon.com/images/M/MV5BNjJlOWUwODAtYWQ3My00MTBjLWIyYjgtZGFiNDRlYjc5NWUyXkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_UX182_CR0,0,182,268_AL_.jpg", 
-            name: "The Dissident", 
-            genero: "crime", 
-            notaImdb: 8.1, 
-            sinopse:"When Washington Post journalist Jamal Khashoggi disappears in Istanbul, his fiancée and dissidents around the world piece together the clues to a murder and expose a global cover up.", 
-            dataLancamento:"2021-12-21", 
-            categoria:"filme"
-        },
-        {
-            id: 14, 
-            bannerTop: "https://thumbs.dreamstime.com/b/eye-vision-test-banner-line-icons-set-infographics-vector-signs-eye-vision-test-banner-line-icons-set-infographics-vector-signs-106198263.jpg", 
-            banner:"https://m.media-amazon.com/images/M/MV5BNGVjNWI4ZGUtNzE0MS00YTJmLWE0ZDctN2ZiYTk2YmI3NTYyXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_UX182_CR0,0,182,268_AL_.jpg", 
-            name: "Coringa", 
-            genero: "drama", 
-            notaImdb:8.5, 
-            sinopse:"In Gotham City, mentally troubled comedian Arthur Fleck is disregarded and mistreated by society. He then embarks on a downward spiral of revolution and bloody crime. This path brings him face-to-face with his alter-ego: the Joker", 
-            dataLancamento:"2019-12-21", 
-            categoria:"filme"
-        },
-        {
-            id: 15, 
-            bannerTop: "https://thumbs.dreamstime.com/b/eye-vision-test-banner-line-icons-set-infographics-vector-signs-eye-vision-test-banner-line-icons-set-infographics-vector-signs-106198263.jpg", 
-            banner:"https://m.media-amazon.com/images/M/MV5BMjhiMzgxZTctNDc1Ni00OTIxLTlhMTYtZTA3ZWFkODRkNmE2XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UY268_CR5,0,182,268_AL_.jpg", 
-            name: "Breaking Bad", 
-            genero: "drama", 
-            notaImdb:9.5, 
-            sinopse:"A high school chemistry teacher diagnosed with inoperable lung cancer turns to manufacturing and selling methamphetamine in order to secure his family's future.", 
-            dataLancamento:"2008-12-21", 
-            categoria:"serie"
-        },
-        {
-            id: 16, 
-            bannerTop: "https://thumbs.dreamstime.com/b/eye-vision-test-banner-line-icons-set-infographics-vector-signs-eye-vision-test-banner-line-icons-set-infographics-vector-signs-106198263.jpg", 
-            banner:"https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UX182_CR0,0,182,268_AL_.jpg", 
-            name: "Um Sonho de Liberdade", 
-            genero: "drama", 
-            notaImdb:9.3, 
-            sinopse:"Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.", 
-            dataLancamento:"1994-12-21", 
-            categoria:"filme"
-        },
-        {
-            id: 17, 
-            bannerTop: "https://thumbs.dreamstime.com/b/eye-vision-test-banner-line-icons-set-infographics-vector-signs-eye-vision-test-banner-line-icons-set-infographics-vector-signs-106198263.jpg", 
-            banner:"https://m.media-amazon.com/images/M/MV5BYTRiNDQwYzAtMzVlZS00NTI5LWJjYjUtMzkwNTUzMWMxZTllXkEyXkFqcGdeQXVyNDIzMzcwNjc@._V1_UY268_CR7,0,182,268_AL_.jpg", 
-            name: "Game of Thrones", 
-            genero: "drama", 
-            notaImdb:9.3, 
-            sinopse:"Nine noble families fight for control over the lands of Westeros, while an ancient enemy returns after being dormant for millennia.", 
-            dataLancamento:"2011-12-21", 
-            categoria:"serie"
-        },
-        {
-            id: 18, 
-            bannerTop: "https://thumbs.dreamstime.com/b/eye-vision-test-banner-line-icons-set-infographics-vector-signs-eye-vision-test-banner-line-icons-set-infographics-vector-signs-106198263.jpg", 
-            banner:"https://m.media-amazon.com/images/M/MV5BMGUwZjliMTAtNzAxZi00MWNiLWE2NzgtZGUxMGQxZjhhNDRiXkEyXkFqcGdeQXVyNjU1NzU3MzE@._V1_UX182_CR0,0,182,268_AL_.jpg", 
-            name: "Entre Facas e Segredos", 
-            genero: "comedia", 
-            notaImdb:7.9, 
-            sinopse:"A detective investigates the death of a patriarch of an eccentric, combative family.", 
-            dataLancamento:"2019-12-21", 
-            categoria:"filme"
-        },
-        {
-            id: 19, 
-            bannerTop: "https://thumbs.dreamstime.com/b/eye-vision-test-banner-line-icons-set-infographics-vector-signs-eye-vision-test-banner-line-icons-set-infographics-vector-signs-106198263.jpg", 
-            banner:"https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_UX182_CR0,0,182,268_AL_.jpg", 
-            name: "Batman: O Cavaleiro das Trevas", 
-            genero: "acao", 
-            notaImdb:9.0, 
-            sinopse:"When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.", 
-            dataLancamento:"2008-12-21", 
-            categoria:"filme"
-        },
-        {
-            id: 20, 
-            bannerTop: "https://thumbs.dreamstime.com/b/eye-vision-test-banner-line-icons-set-infographics-vector-signs-eye-vision-test-banner-line-icons-set-infographics-vector-signs-106198263.jpg", 
-            banner:"https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_UX182_CR0,0,182,268_AL_.jpg", 
-            name: "Vingadores: Ultimato", 
-            genero: "acao", 
-            notaImdb:8.4, 
-            sinopse:"After the devastating events of Vingadores: Guerra Infinita (2018), the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos' actions and restore balance to the universe.", 
-            dataLancamento:"2019-12-21", 
-            categoria:"filme"
-        },
-        {
-            id: 21, 
-            bannerTop: "https://thumbs.dreamstime.com/b/eye-vision-test-banner-line-icons-set-infographics-vector-signs-eye-vision-test-banner-line-icons-set-infographics-vector-signs-106198263.jpg", 
-            banner:"https://m.media-amazon.com/images/M/MV5BMGE3MzMzOTAtOTExMy00MzFiLWFjNDItN2ZiZmYyYjY2MWUwXkEyXkFqcGdeQXVyMTEyMjM2NDc2._V1_UX182_CR0,0,182,268_AL_.jpg", 
-            name: "Pieces of a Woman", 
-            genero: "drama", 
-            notaImdb:7.1, 
-            sinopse:"When a young mother's home birth ends in unfathomable tragedy, she begins a year-long odyssey of mourning that fractures relationships with loved ones in this deeply personal story of a woman learning to live alongside her loss.", 
-            dataLancamento:"2021-12-21", 
-            categoria:"filme"
-        },
-        {
-            id: 22, 
-            bannerTop: "https://thumbs.dreamstime.com/b/eye-vision-test-banner-line-icons-set-infographics-vector-signs-eye-vision-test-banner-line-icons-set-infographics-vector-signs-106198263.jpg", 
-            banner:"https://m.media-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UX182_CR0,0,182,268_AL_.jpg", 
-            name: "Interestelar", 
-            genero: "aventura", 
-            notaImdb:8.6, 
-            sinopse:"https://m.media-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UX182_CR0,0,182,268_AL_.jpg", 
-            dataLancamento:"2014-12-21", 
-            categoria:"filme"
-        },
-        {
-            id: 23, 
-            bannerTop: "https://thumbs.dreamstime.com/b/eye-vision-test-banner-line-icons-set-infographics-vector-signs-eye-vision-test-banner-line-icons-set-infographics-vector-signs-106198263.jpg", 
-            banner:"https://m.media-amazon.com/images/M/MV5BOTdmNTFjNDEtNzg0My00ZjkxLTg1ZDAtZTdkMDc2ZmFiNWQ1XkEyXkFqcGdeQXVyNTAzNzgwNTg@._V1_UX182_CR0,0,182,268_AL_.jpg", 
-            name: "1917", 
-            genero: "drama", 
-            notaImdb:8.3, 
-            sinopse:"April 6th, 1917. As a regiment assembles to wage war deep in enemy territory, two soldiers are assigned to race against time and deliver a message that will stop 1,600 men from walking straight into a deadly trap.", 
-            dataLancamento:"2020-12-21", 
-            categoria:"filme"
-        },
-        {
-            id: 24, 
-            bannerTop: "https://thumbs.dreamstime.com/b/eye-vision-test-banner-line-icons-set-infographics-vector-signs-eye-vision-test-banner-line-icons-set-infographics-vector-signs-106198263.jpg", 
-            banner:"https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_UX182_CR0,0,182,268_AL_.jpg", 
-            name: "A origem", 
-            genero: "acao", 
-            notaImdb:8.8, 
-            sinopse:"A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.", 
-            dataLancamento:"2010-12-21", 
-            categoria:"filme"
-        },
-        {
-            id: 25, 
-            bannerTop: "https://thumbs.dreamstime.com/b/eye-vision-test-banner-line-icons-set-infographics-vector-signs-eye-vision-test-banner-line-icons-set-infographics-vector-signs-106198263.jpg", 
-            banner:"https://m.media-amazon.com/images/M/MV5BMjIxMjgxNTk0MF5BMl5BanBnXkFtZTgwNjIyOTg2MDE@._V1_UX182_CR0,0,182,268_AL_.jpg", 
-            name: "O Lobo de Wall Street", 
-            genero: "crime", 
-            notaImdb:8.2, 
-            sinopse:"Based on the true story of Jordan Belfort, from his rise to a wealthy stock-broker living the high life to his fall involving crime, corruption and the federal government.", 
-            dataLancamento:"2014-12-21", 
-            categoria:"filme"
-        },
-        {
-            id: 26, 
-            bannerTop: "https://thumbs.dreamstime.com/b/eye-vision-test-banner-line-icons-set-infographics-vector-signs-eye-vision-test-banner-line-icons-set-infographics-vector-signs-106198263.jpg", 
-            banner:"https://m.media-amazon.com/images/M/MV5BNWIwODRlZTUtY2U3ZS00Yzg1LWJhNzYtMmZiYmEyNmU1NjMzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UY268_CR1,0,182,268_AL_.jpg", 
-            name: "Forrest Gump: O contador de Histórias", 
-            genero: "drama", 
-            notaImdb:8.8, 
-            sinopse:"The presidencies of Kennedy and Johnson, the events of Vietnam, Watergate and other historical events unfold through the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart.", 
-            dataLancamento:"1994-12-21", 
-            categoria:"filme"
-        },
-        {
-            id: 27, 
-            bannerTop: "https://thumbs.dreamstime.com/b/eye-vision-test-banner-line-icons-set-infographics-vector-signs-eye-vision-test-banner-line-icons-set-infographics-vector-signs-106198263.jpg", 
-            banner:"https://m.media-amazon.com/images/M/MV5BOTE1M2Q3YjQtZGMzYy00MDcwLWIzNzctYzI3MDBhMjBmYTQwXkEyXkFqcGdeQXVyMTEyMjM2NDc2._V1_UX182_CR0,0,182,268_AL_.jpg", 
-            name: "Cobra Kai", 
-            genero: "acao", 
-            notaImdb:8.6, 
-            sinopse:"Decades after their 1984 All Valley Karate Tournament bout, a middle-aged Daniel LaRusso and Johnny Lawrence find themselves martial-arts rivals again.", 
-            dataLancamento:"2018-12-21", 
-            categoria:"serie"
-        },
-        {
-            id: 28, 
-            bannerTop: "https://thumbs.dreamstime.com/b/eye-vision-test-banner-line-icons-set-infographics-vector-signs-eye-vision-test-banner-line-icons-set-infographics-vector-signs-106198263.jpg", 
-            banner:"https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UY268_CR3,0,182,268_AL_.jpg", 
-            name: "O Poderoso Chefão", 
-            genero: "crime", 
-            notaImdb:9.2, 
-            sinopse:"An organized crime dynasty's aging patriarch transfers control of his clandestine empire to his reluctant son.", 
-            dataLancamento:"1972-12-21", 
-            categoria:"filme"
-        },
-        {
-            id: 29, 
-            bannerTop: "https://thumbs.dreamstime.com/b/eye-vision-test-banner-line-icons-set-infographics-vector-signs-eye-vision-test-banner-line-icons-set-infographics-vector-signs-106198263.jpg", 
-            banner:"https://m.media-amazon.com/images/M/MV5BOTNjM2Y2ZjgtMDc5NS00MDQ1LTgyNGYtYzYwMTAyNWQwYTMyXkEyXkFqcGdeQXVyMjE4NzUxNDA@._V1_UX182_CR0,0,182,268_AL_.jpg", 
-            name: "Druk", 
-            genero: "comedia", 
-            notaImdb:7.8, 
-            sinopse:"Four friends, all high school teachers, test a theory that they will improve their lives by maintaining a constant level of alcohol in their blood.", 
-            dataLancamento:"2020-12-21", 
-            categoria:"filme"
-        },
-        {
-            id: 30, 
-            bannerTop: "https://thumbs.dreamstime.com/b/eye-vision-test-banner-line-icons-set-infographics-vector-signs-eye-vision-test-banner-line-icons-set-infographics-vector-signs-106198263.jpg", 
-            banner:"https://m.media-amazon.com/images/M/MV5BMTYzODQzYjQtNTczNC00MzZhLTg1ZWYtZDUxYmQ3ZTY4NzA1XkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_UX182_CR0,0,182,268_AL_.jpg", 
-            name: "Mulher-Maravilha", 
-            genero: "acao", 
-            notaImdb:7.4, 
-            sinopse:"When a pilot crashes and tells of conflict in the outside world, Diana, an Amazonian warrior in training, leaves home to fight a war, discovering her full powers and true destiny.", 
-            dataLancamento:"2017-12-21", 
-            categoria:"filme"
-        }
-
+    {
+        id: 1, 
+        name: "João Vitor", 
+        cpf:"023418842", 
+        crm: "3252352",
+        titulacao:"Mestrado",
+        tipo:"medico"
+    },
+    {
+        id: 2, 
+        name: "Carlos Antônio", 
+        cpf:"352035913", 
+        crm: "24551",
+        titulacao:"Pos-graduado",
+        tipo:"medico"
+    },
+    {
+        id: 3, 
+        name: "Carol Nakamura", 
+        cpf:"0062858231", 
+        crm: "67869",
+        titulacao:"graduada",
+        tipo:"medico"
+    },
+    {
+        id: 4, 
+        name: "José da Silva", 
+        cpf:"038832521", 
+        crm: "",
+        titulacao:"",
+        tipo:"paciente"
+    },
+    {
+        id: 5, 
+        name: "Maria Antonieta", 
+        cpf:"156743256", 
+        crm: "",
+        titulacao:"",
+        tipo:"paciente"
+    },
+    {
+        id: 6, 
+        name: "Andre", 
+        cpf:"42934922", 
+        crm: "",
+        titulacao:"",
+        tipo:"paciente"
+    },
+    {
+        id: 7, 
+        name: "Mario Araujo", 
+        cpf:"3252362112", 
+        crm: "",
+        titulacao:"",
+        tipo:"paciente"
+    }
 ]
 export default Filmes

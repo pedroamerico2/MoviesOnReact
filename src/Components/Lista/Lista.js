@@ -10,7 +10,7 @@ import "./Styles/Lista.css"
 
 export default function CatalogoLista(props){
 
-    const{searchOnCatalog, filterCategory, dateMax, dateMin, filterGender, dataMovies, setDataMovies} = props;
+    const{searchOnCatalog, dataMovies, setDataMovies} = props;
 
     const [showDelete, setShowDelete] = useState(false)
     const [showDetails, setShowDetails] = useState(false)
@@ -38,11 +38,13 @@ export default function CatalogoLista(props){
         if (movieFilterDetails) {
             setShowDetails({
                 id: movieFilterDetails.id,
-                banner: movieFilterDetails.banner,
                 name: movieFilterDetails.name,
-                sinopse: movieFilterDetails.sinopse,
-                categoria: movieFilterDetails.categoria,
-                genero: movieFilterDetails.genero,
+                cpf: movieFilterDetails.cpf,
+                crm: movieFilterDetails.crm,
+                titulacao: movieFilterDetails.titulacao,
+                tipo: movieFilterDetails.tipo,
+                cor:movieFilterDetails.cor,
+                dataNascimento:movieFilterDetails.dataNascimento,
                 show: true,
             });
         } else {
@@ -54,11 +56,13 @@ export default function CatalogoLista(props){
         if (movieFilterEdit) {
             setShowEdit({
                 id: movieFilterEdit.id,
-                banner: movieFilterEdit.banner,
                 name: movieFilterEdit.name,
-                sinopse: movieFilterEdit.sinopse,
-                categoria: movieFilterEdit.categoria,
-                genero: movieFilterEdit.genero,
+                cpf: movieFilterEdit.cpf,
+                crm: movieFilterEdit.crm,
+                titulacao: movieFilterEdit.titulacao,
+                tipo: movieFilterEdit.tipo,
+                cor:movieFilterEdit.cor,
+                dataNascimento:movieFilterEdit.dataNascimento,
                 show: true,
             });
             
@@ -66,19 +70,18 @@ export default function CatalogoLista(props){
             alert("nada aqui")
         }
     }
-    function editData(id, banner, name, sinopse, categoria ,genero){
+    function editData(id, name, cpf, crm ,titulacao, tipo, cor, dataNascimento){
             setDataMovies(dataMovies.map((movie)=>{
                 if(movie.id === id){
                     return{
                         id: movie.id,
-                        bannerTop: movie.bannerTop,
-                        banner: banner,
                         name: name,
-                        genero: genero,
-                        notaImdb: movie.notaImdb,
-                        sinopse: sinopse,
-                        dataLancamento: movie.dataLancamento,
-                        categoria: categoria,
+                        cpf: cpf,
+                        crm: crm,
+                        titulacao: titulacao,
+                        tipo: tipo,
+                        cor:cor,
+                        dataNascimento: dataNascimento
                     }
                 }else{
                     return {...movie}
@@ -137,8 +140,7 @@ export default function CatalogoLista(props){
                             }
                         </th>
                         <th>#</th>
-                        <th>Banner</th>
-                        <th>Name 
+                        <th>Nome 
                                 {
                                     toggleOrderName === 1?
                                     <i className="orderIcon material-icons" onClick={()=>setToggleOrderName(2)}>
@@ -154,9 +156,8 @@ export default function CatalogoLista(props){
                                     </i>       
                                 }
                         </th>
-                        <th>Genero</th>
-                        <th>Categoria</th>
-                        <th style={{width: "130px"}}>Nota IMDB 
+                        <th>Cpf</th>
+                        <th style={{width: "130px"}}>Tipo 
                                 {
                                     toggleOrderNota === 1?
                                     <i className="orderIcon material-icons" onClick={()=>setToggleOrderNota(2)}>
@@ -172,7 +173,6 @@ export default function CatalogoLista(props){
                                     </i>   
                                 }
                         </th>
-                        <th>Data de Lancamento</th>
                         <th className="text-center"style={{width: "200px"}}> Acoes </th>
                     </tr>
                 </thead>
@@ -198,24 +198,10 @@ export default function CatalogoLista(props){
                                 return 0
                             }  
                         })
-                        .sort((Movie1,Movie2)=>{
-                            if(toggleOrderNota === 1){
-                                return Movie1.notaImdb - Movie2.notaImdb
-                            }if(toggleOrderNota === 2){
-                                return Movie2.notaImdb - Movie1.notaImdb
-                            }
-                            return 0 
-                        })
                         .filter((a)=>(
                             a.name.toUpperCase().indexOf(searchOnCatalog.toUpperCase()) !== -1 ||
-                            a.categoria.toUpperCase().indexOf(searchOnCatalog.toUpperCase()) !== -1 ||
-                            a.genero.toUpperCase().indexOf(searchOnCatalog.toUpperCase()) !== -1
-                        ))
-                        .filter((b)=>(
-                            b.genero.toUpperCase().indexOf(filterGender.toUpperCase()) !== -1
-                        ))
-                        .filter((elementCateg)=>(
-                            elementCateg.categoria.toUpperCase().indexOf(filterCategory.toUpperCase()) !== -1
+                            a.cpf.indexOf(searchOnCatalog) !== -1 ||
+                            a.crm.indexOf(searchOnCatalog) !== -1
                         ))
                         .map((e,index)=>(
                             <tr>
@@ -233,17 +219,9 @@ export default function CatalogoLista(props){
                                     
                                 </td>
                                 <td>{index+1}</td>
-                                <td>
-                                    <img 
-                                        src={e.banner} 
-                                        style={{maxWidth: "30px", maxHeight:"50px"}}
-                                    />
-                                </td>
                                 <td>{e.name}</td>
-                                <td>{e.genero}</td>
-                                <td>{e.categoria}</td>
-                                <td>{e.notaImdb}</td>
-                                <td>{e.dataLancamento}</td>
+                                <td>{e.cpf}</td>
+                                <td>{e.tipo}</td>
                                 <td>
                                     <Button  onClick={()=>setShowEdit(!showEdit), ()=>searchMovieOnListToEdit(e.id)}className="mx-1" variant="warning"><i className="material-icons">mode_edit</i></Button>
                                     <Button onClick={()=>setShowDelete(!showDelete), ()=>searchMovieOnList(e.id)} className="mx-1" variant="danger"><i className="material-icons">delete</i></Button>

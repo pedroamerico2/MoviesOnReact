@@ -7,7 +7,7 @@ export default function Header(){
     return(
         <>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-                <Navbar.Brand href=""><Link to="/">Cansheteria</Link ></Navbar.Brand>
+                <Navbar.Brand href=""><Link to="/">Hospital</Link ></Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
